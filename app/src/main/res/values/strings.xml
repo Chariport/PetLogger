@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">PetLogger</string>
+    <string name="sex_prompt">Select a Sex</string>
+    <string-array name="create_pet_sex">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string name="type_prompt">Select a Type</string>
+    <string-array name="create_pet_type">
+        <item>Dog</item>
+        <item>Cat</item>
+        <item>Other</item>
+    </string-array>
 </resources>
