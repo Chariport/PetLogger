@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".create_pet" />
-        <activity android:name=".weight_log" />
+        <activity android:name=".weight_log"/>
     </application>
 
 </manifest>
