@@ -24,8 +24,9 @@
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:srcCompat="@tools:sample/avatars[2]" />
+            android:layout_height="249dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/snake" />
 
         <TextView
             android:id="@+id/textView5"
@@ -39,7 +40,7 @@
             android:id="@+id/textView14"
             android:layout_width="113dp"
             android:layout_height="wrap_content"
-            android:text="Dude"
+            android:text="Louis"
             android:textAlignment="center"
             android:textSize="24sp" />
 
@@ -131,12 +132,14 @@
             app:srcCompat="@drawable/individual_weights" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/viewWeightLogButton"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Entry"
-            android:textColor="@color/colorPrimaryDark" />
+            android:text="View Weight Log"
+            android:textColor="@color/colorPrimaryDark"
+            android:clickable="true"
+            android:onClick="viewWeightLog"/>
 
         <TextView
             android:id="@+id/textView25"

@@ -23,13 +23,7 @@ public class pet_profile extends AppCompatActivity {
             }
         });
 
-        weightLogButton= (Button) findViewById(R.id.button3);
-        weightLogButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openWeightLog();
-            }
-        });
+
     }
 
     public void openMainPage(){
@@ -38,7 +32,13 @@ public class pet_profile extends AppCompatActivity {
     }
 
     public void openWeightLog(){
-        Intent intent = new Intent(this, petCardMainPage.class);
+        Intent intent = new Intent(this, weight_log.class);
+        startActivity(intent);
+    }
+
+    public void viewWeightLog(View view)
+    {
+        Intent intent = new Intent(pet_profile.this, weight_log.class);
         startActivity(intent);
     }
 }

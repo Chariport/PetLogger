@@ -16,9 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".create_pet"></activity>
-        <activity android:name=".weight_log"></activity>
-        <activity android:name=".pet_profile"></activity>
+        <activity android:name=".create_pet" />
+        <activity android:name=".weight_log" />
+        <activity android:name=".pet_profile" />
+        <activity android:name=".weight_log_entry"></activity>
     </application>
 
 </manifest>
