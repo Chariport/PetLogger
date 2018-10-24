@@ -18,7 +18,7 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:background="@color/colorAccent"
-            android:text="< Back"
+            android:text="Back"
             android:textColor="@color/colorPrimaryDark" />
 
         <ImageView
@@ -128,7 +128,7 @@
             android:layout_width="match_parent"
             android:layout_height="269dp"
             android:cropToPadding="true"
-            app:srcCompat="@drawable/IndividualWeights" />
+            app:srcCompat="@drawable/individual_weights" />
 
         <Button
             android:id="@+id/button3"

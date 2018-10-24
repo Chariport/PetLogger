@@ -17,4 +17,9 @@ public class petCardMainPage extends AppCompatActivity {
     {
         startActivity(new Intent(petCardMainPage.this, create_pet.class));
     }
+
+    public void petProfile(View v)
+    {
+        startActivity(new Intent(petCardMainPage.this, pet_profile.class));
+    }
 }
