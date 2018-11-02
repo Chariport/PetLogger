@@ -19,8 +19,8 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
 {
     final String TAG = this.getClass().getName();
 
-    public Spinner sex, type;
-    public Button addPhoto, finish, cancel;
+    public Spinner sex;
+    public Button finish, cancel;
     public TextView name, bday;
     public DatePickerDialog.OnDateSetListener bdayDateSetListener;
 
@@ -39,8 +39,6 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
         //actionBar.setHomeAsUpIndicator();
 
         //set up buttons
-        addPhoto = (Button)findViewById(R.id.addPhotoButton);
-        addPhoto.setOnClickListener(this);
         finish = (Button)findViewById(R.id.finishButton);
         finish.setOnClickListener(this);
         cancel = (Button)findViewById(R.id.cancelButton);
@@ -49,8 +47,6 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
         //set up Spinners
         sex = (Spinner)findViewById(R.id.spinnerSex);
         sex.setPrompt("Sex: ");
-        type = (Spinner)findViewById(R.id.spinnerType);
-        type.setPrompt("Type: ");
         //set up TextViews
         name = (TextView)findViewById(R.id.petName);
         bday = (TextView) findViewById(R.id.petBday);
@@ -79,6 +75,10 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
         // ex: are you sure you want to exit creating a pet profile...
     }
 
+    public void addPetImage(View v)
+    {
+        Log.d(TAG,"in addpetimage....");
+    }
 
     @Override
     public void onClick(View v)
@@ -103,10 +103,6 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
                 dialog.show();
 
                 break;
-            case R.id.addPhotoButton:
-                // logic to add photo...
-                break;
-
             case R.id.cancelButton:
                 // need to add are you sure alert...
                 Log.d(TAG,"cancel button was clicked");
@@ -121,12 +117,11 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
                 //   ex: new pet profile created..edit more pet details on the pets profile...
 
                 String petSex = sex.getSelectedItem().toString();
-                String petType = type.getSelectedItem().toString();
                 String petName = name.getText().toString();
                 String petBday = bday.getText().toString();
                 // need something to hold the picture...
 
-                Log.d(TAG,"petSex: " + petSex + " petType: " + petType + " petName: " + petName + " petBday: " + petBday);
+                Log.d(TAG,"petSex: " + petSex + " petName: " + petName + " petBday: " + petBday);
 
                 Intent fBi = new Intent(create_pet.this, petCardMainPage.class);
                 startActivity(fBi);
