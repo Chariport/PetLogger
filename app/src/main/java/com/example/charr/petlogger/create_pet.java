@@ -2,8 +2,13 @@ package com.example.charr.petlogger;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,10 +16,13 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
 import java.lang.reflect.Array;
+import java.util.Base64;
 import java.util.Calendar;
 
 public class create_pet extends AppCompatActivity implements View.OnClickListener
@@ -25,6 +33,8 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
     public Button finish, cancel;
     public TextView name, bday;
     public DatePickerDialog.OnDateSetListener bdayDateSetListener;
+    public ImageView petImage;
+    private static final int RESULT_LOAD_IMAGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -71,6 +81,10 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
                 bday.setText(date);
             }
         };
+
+        //set up imageView
+        petImage = (ImageView)findViewById(R.id.pet_imageView);
+        petImage.setOnClickListener(this);
     }
 
     @Override
@@ -126,13 +140,38 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
                 String petSex = sex.getSelectedItem().toString();
                 String petName = name.getText().toString();
                 String petBday = bday.getText().toString();
-                // need something to hold the picture...
+
+                // Get Bitmap of image
+                Bitmap petProfileImage = ((BitmapDrawable)petImage.getDrawable()).getBitmap();
+
+                // compress image..not sure if this is necessary
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                petProfileImage.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                String encodedImgae = android.util.Base64.encodeToString(byteArrayOutputStream.toByteArray(),android.util.Base64.DEFAULT);
+
 
                 Log.d(TAG,"petSex: " + petSex + " petName: " + petName + " petBday: " + petBday);
 
                 Intent fBi = new Intent(create_pet.this, petCardMainPage.class);
                 startActivity(fBi);
                 break;
+
+             case R.id.pet_imageView:
+                 Log.d(TAG,"clicked on image view!! son!@");
+                 Intent galleryIntent = new Intent(
+                         Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                 startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
+                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && data != null)
+        {
+            Uri selectedImage = data.getData(); //address of image
+            petImage.setImageURI(selectedImage);
         }
     }
 }
