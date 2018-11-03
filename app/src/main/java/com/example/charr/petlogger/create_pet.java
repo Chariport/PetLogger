@@ -8,11 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.Calendar;
 
 public class create_pet extends AppCompatActivity implements View.OnClickListener
@@ -46,10 +48,15 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
 
         //set up Spinners
         sex = (Spinner)findViewById(R.id.spinnerSex);
-        sex.setPrompt("Sex: ");
+        ArrayAdapter<CharSequence> sexadapter = ArrayAdapter.createFromResource(
+                this, R.array.create_pet_sex, R.layout.spinner_layout);
+        sexadapter.setDropDownViewResource(R.layout.spinner_layout);
+        sex.setAdapter(sexadapter);
+
+
         //set up TextViews
-        name = (TextView)findViewById(R.id.petName);
-        bday = (TextView) findViewById(R.id.petBday);
+        name = (TextView)findViewById(R.id.edittext_name);
+        bday = (TextView) findViewById(R.id.edittext_birthdate);
         bday.setOnClickListener(this);
 
         //set up DateSetListener
@@ -87,7 +94,7 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
 
         switch(v.getId())
         {
-            case R.id.petBday:
+            case R.id.edittext_birthdate:
                 Calendar cal = Calendar.getInstance();
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
