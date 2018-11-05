@@ -11,8 +11,6 @@
     <string name="hint_weight">Select a Weight...</string>
     <string name="hint_length">Select a Length...</string>
 
-    <string name="click_hint">Click...</string>
-
 
     <string name="sex_prompt">Select a Sex:</string>
     <string-array name="create_pet_sex">

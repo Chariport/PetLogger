@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TabHost;
 import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
@@ -35,6 +36,7 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
     public DatePickerDialog.OnDateSetListener bdayDateSetListener;
     public ImageView petImage;
     private static final int RESULT_LOAD_IMAGE = 1;
+    public boolean gotImage = false; //used to see if user selected an image
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -132,10 +134,7 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
                 break;
             case R.id.finishButton:
                 Log.d(TAG,"finish button was clicked");
-                // any data validation for name??
 
-                // need to add message on creation:
-                //   ex: new pet profile created..edit more pet details on the pets profile...
 
                 String petSex = sex.getSelectedItem().toString();
                 String petName = name.getText().toString();
@@ -148,9 +147,15 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                 petProfileImage.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
                 String encodedImgae = android.util.Base64.encodeToString(byteArrayOutputStream.toByteArray(),android.util.Base64.DEFAULT);
-
+                Log.d(TAG,"gotImage: " + gotImage);
 
                 Log.d(TAG,"petSex: " + petSex + " petName: " + petName + " petBday: " + petBday);
+
+                // if gotImage is false.. lets set a default one
+
+                // whats the validation..just name..?
+                // after data validation,,add new data to petdatabase and return to home page
+
 
                 Intent fBi = new Intent(create_pet.this, petCardMainPage.class);
                 startActivity(fBi);
@@ -170,6 +175,7 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && data != null)
         {
+            gotImage = true;
             Uri selectedImage = data.getData(); //address of image
             petImage.setImageURI(selectedImage);
         }
