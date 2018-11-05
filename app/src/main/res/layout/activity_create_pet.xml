@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/create_profile_background"
     android:fillViewport="true"
     tools:context=".create_pet">
 
@@ -14,24 +15,26 @@
 
         <Button
             android:id="@+id/addPhotoButton"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
+            android:layout_width="232dp"
+            android:layout_height="232dp"
+            android:layout_alignStart="@+id/finishButton"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:text="Click to Add Photo"/>
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="75dp"
+            android:background="@drawable/defaultsnake" />
 
         <EditText
             android:id="@+id/petName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="216dp"
+            android:layout_marginTop="342dp"
+            android:layout_toEndOf="@+id/cancelButton"
             android:ems="10"
-            android:inputType="textPersonName"
             android:hint="Enter Pet's Name..."
-            android:textSize="20dp"/>
+            android:inputType="textPersonName"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/petBday"
@@ -40,39 +43,39 @@
             android:layout_below="@+id/petName"
             android:layout_alignStart="@+id/petName"
             android:layout_alignLeft="@+id/petName"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="21dp"
             android:ems="10"
             android:hint=" Enter Pet's Birthday..."
             android:inputType="date"
+            android:textColor="#000000"
             android:textSize="20dp" />
 
         <Button
             android:id="@+id/cancelButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="86dp"
+            android:layout_height="52dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="66dp"
-            android:layout_marginLeft="66dp"
-            android:layout_marginBottom="0dp"
-            android:background="#ff6666"
-            android:text="Cancel" />
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="11dp"
+            android:background="@drawable/cancelbutton" />
 
         <Button
             android:id="@+id/finishButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/cancelButton"
+            android:layout_height="66dp"
+            android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="66dp"
+            android:layout_marginStart="57dp"
+            android:layout_marginEnd="44dp"
             android:layout_marginRight="66dp"
-            android:background="#66ffb3"
-            android:text="Finish" />
+            android:layout_marginBottom="34dp"
+            android:background="@drawable/savebutton" />
 
         <Spinner
             android:id="@+id/spinnerSex"
@@ -81,7 +84,9 @@
             android:layout_alignEnd="@+id/petName"
             android:layout_alignRight="@+id/petName"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="352dp"
+            android:layout_marginTop="484dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
             android:entries="@array/create_pet_sex"
             android:prompt="@string/sex_prompt" />
 
@@ -92,7 +97,9 @@
             android:layout_alignEnd="@+id/petName"
             android:layout_alignRight="@+id/petName"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="418dp"
+            android:layout_marginTop="546dp"
+            android:layout_marginEnd="-9dp"
+            android:layout_marginRight="-9dp"
             android:entries="@array/create_pet_type"
             android:prompt="@string/type_prompt" />
 
@@ -100,28 +107,28 @@
             android:id="@+id/textViewSex"
             android:layout_width="89dp"
             android:layout_height="42dp"
-            android:textColor="#000000"
             android:layout_alignTop="@+id/spinnerSex"
-            android:layout_marginTop="9dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginRight="1dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginRight="36dp"
             android:layout_toStartOf="@+id/spinnerSex"
             android:layout_toLeftOf="@+id/spinnerSex"
             android:text="Select Sex:"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="16dp" />
 
         <TextView
             android:id="@+id/textViewType"
             android:layout_width="89dp"
             android:layout_height="42dp"
-            android:textColor="#000000"
             android:layout_alignTop="@+id/spinnerType"
-            android:layout_marginTop="9dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginRight="1dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="34dp"
+            android:layout_marginRight="34dp"
             android:layout_toStartOf="@+id/spinnerSex"
             android:layout_toLeftOf="@+id/spinnerSex"
             android:text="Select Type:"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="16dp" />
 
     </RelativeLayout>

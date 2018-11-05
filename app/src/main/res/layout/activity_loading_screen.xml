@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/loading_screen_background"
+    android:background="@drawable/background"
     tools:context=".loading_screen"
     >
 
@@ -18,41 +18,21 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="52dp"
-            android:layout_marginEnd="47dp"
-            android:text="Pet Logger"
-            android:textColor="@android:color/white"
-            android:textSize="60sp"
-            android:textStyle="bold"
-            app:fontFamily="casual"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.333"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/Icon"
             android:layout_width="310dp"
             android:layout_height="279dp"
             android:layout_marginStart="44dp"
-            android:layout_marginTop="32dp"
             android:layout_marginEnd="18dp"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
             app:srcCompat="@drawable/icon"
-            tools:ignore="VectorDrawableCompat" />
+            tools:ignore="VectorDrawableCompat"
+            tools:layout_editor_absoluteY="204dp" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -69,6 +49,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Icon" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="326dp"
+            android:layout_height="179dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.289"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/petlogger_label" />
 
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

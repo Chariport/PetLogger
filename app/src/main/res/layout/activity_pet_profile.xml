@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pet_profile">
+    tools:context=".pet_profile"
+    android:background="@drawable/main_activity_background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,155 +16,239 @@
         <Button
             android:id="@+id/button2"
             style="@style/Widget.AppCompat.Button.Small"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:text="Back"
+            android:layout_width="101dp"
+            android:layout_height="54dp"
+            android:background="@drawable/backbutton"
             android:textColor="@color/colorPrimaryDark" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="249dp"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/snake3" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="111dp"
-            android:layout_height="wrap_content"
-            android:text="Name:"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="113dp"
-            android:layout_height="wrap_content"
-            android:text="Louis"
-            android:textAlignment="center"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Age:"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/textView22"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="     20 years old"
-            android:textAlignment="center"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/textView23"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sex:"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/textView24"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="     Male"
-            android:textAlignment="center"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Weight:"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="match_parent"
-            android:layout_height="34dp"
-            android:text="1500 grams on October 23, 2018"
-            android:textAlignment="center"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Last Fed:"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="         October 23, 2018"
-            android:textAlignment="center"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Last Shed:"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="         October 23, 2018"
-            android:textAlignment="center"
-            android:textSize="18sp" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="match_parent"
-            android:layout_height="269dp"
-            android:cropToPadding="true"
-            app:srcCompat="@drawable/individual_weights" />
-
-        <Button
-            android:id="@+id/viewWeightLogButton"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="View Weight Log"
-            android:textColor="@color/colorPrimaryDark"
-            android:clickable="true"
-            android:onClick="viewWeightLog"/>
-
-        <TextView
-            android:id="@+id/textView25"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Notes:"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" />
-
-        <ScrollView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
+            <ImageView
+                android:id="@+id/pet"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-        </ScrollView>
+                android:layout_height="1171dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="133dp"
+                app:srcCompat="@drawable/pet_profile_card" />
 
-        <TextView
-            android:id="@+id/textView27"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque rhoncus lacus ac sem facilisis dapibus. Aenean enim augue, tristique eget tincidunt ut, dictum at justo. Aliquam pharetra velit dui, ut pharetra tellus consequat sit amet. Aliquam vitae bibendum dui, et scelerisque lacus. Mauris ut pulvinar ligula. Donec facilisis tortor id ante tristique, a accumsan neque dapibus. Aenean magna tortor, finibus ac sodales ac, dignissim at elit. Curabitur in interdum ante, ut mattis massa." />
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="382dp"
+                android:text="Age:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="113dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="91dp"
+                android:layout_marginTop="325dp"
+                android:text="Louis"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="181dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="85dp"
+                android:layout_marginTop="383dp"
+                android:layout_toEndOf="@+id/textView21"
+                android:text="     20 years old"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="111dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="292dp"
+                android:text="Name:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="433dp"
+                android:layout_toEndOf="@+id/textView17"
+                android:text="         October 23, 2018"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="38dp"
+                android:layout_marginTop="431dp"
+                android:text="Last Fed:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textView19"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="194dp"
+                android:layout_marginTop="3dp"
+                android:text="         October 23, 2018"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textView24"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="0dp"
+                android:text="Sex:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="144dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="224dp"
+                android:layout_marginTop="583dp"
+                android:text="     Male"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="470dp"
+                android:text="Weight:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="291dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView15"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="85dp"
+                android:layout_marginTop="7dp"
+                android:text="1500 grams on October 23, 2018"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="123dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="41dp"
+                android:layout_marginTop="537dp"
+                android:text="Last Shed:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="308dp"
+                android:layout_height="231dp"
+                android:layout_below="@+id/textView18"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="58dp"
+                android:layout_marginTop="164dp"
+                android:cropToPadding="true"
+                app:srcCompat="@drawable/individual_weights" />
+
+            <Button
+                android:id="@+id/viewWeightLogButton"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="325dp"
+                android:layout_height="56dp"
+                android:layout_below="@+id/textView23"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="259dp"
+                android:background="@drawable/weight_log_button"
+                android:clickable="true"
+                android:onClick="viewWeightLog"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="81dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/viewWeightLogButton"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="37dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="0dp"
+                android:text="Notes:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
+
+            <ScrollView
+                android:layout_width="321dp"
+                android:layout_height="228dp"
+                android:layout_below="@+id/textView25"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="46dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="86dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView27"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque rhoncus lacus ac sem facilisis dapibus. Aenean enim augue, tristique eget tincidunt ut, dictum at justo. Aliquam pharetra velit dui, ut pharetra tellus consequat sit amet. Aliquam vitae bibendum dui, et scelerisque lacus. Mauris ut pulvinar ligula. Donec facilisis tortor id ante tristique, a accumsan neque dapibus. Aenean magna tortor, finibus ac sodales ac, dignissim at elit. Curabitur in interdum ante, ut mattis massa." />
+                </LinearLayout>
+            </ScrollView>
+
+            <ImageView
+                android:id="@+id/profilePicture"
+                android:layout_width="232dp"
+                android:layout_height="232dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="93dp"
+                android:layout_marginTop="24dp"
+                app:srcCompat="@drawable/screenshot_20181024001530__01" />
+        </RelativeLayout>
 
     </LinearLayout>
 </ScrollView>
