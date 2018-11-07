@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -33,6 +34,7 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
     public Spinner sex;
     public Button finish, cancel;
     public TextView name, bday;
+    public NumberPicker leftOfDecimal, rightOfDecimal;
     public DatePickerDialog.OnDateSetListener bdayDateSetListener;
     public ImageView petImage;
     private static final int RESULT_LOAD_IMAGE = 1;
@@ -87,6 +89,20 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
         //set up imageView
         petImage = (ImageView)findViewById(R.id.pet_imageView);
         petImage.setOnClickListener(this);
+
+        //set up numberPickers
+        leftOfDecimal = (NumberPicker)findViewById(R.id.numberpicker_weightWholeNum);
+        rightOfDecimal = (NumberPicker)findViewById(R.id.numberpicker_weightDecimalNum);
+
+        leftOfDecimal.setMinValue(0);
+        leftOfDecimal.setMaxValue(20);
+        leftOfDecimal.setValue(0);
+        leftOfDecimal.setWrapSelectorWheel(true);
+
+        rightOfDecimal.setMinValue(0);
+        rightOfDecimal.setMaxValue(9);
+        rightOfDecimal.setValue(0);
+        rightOfDecimal.setWrapSelectorWheel(true);
     }
 
     @Override
@@ -135,27 +151,44 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
             case R.id.finishButton:
                 Log.d(TAG,"finish button was clicked");
 
-
+                // get entered values
                 String petSex = sex.getSelectedItem().toString();
                 String petName = name.getText().toString();
                 String petBday = bday.getText().toString();
+                double petWeight = (double)leftOfDecimal.getValue() + (double)rightOfDecimal.getValue()/10;
 
-                // Get Bitmap of image
-                Bitmap petProfileImage = ((BitmapDrawable)petImage.getDrawable()).getBitmap();
+                // set pet sex to empty string if male/female not selected
+                if (petSex.equals("Select Sex..."))
+                {
+                    petSex = "";
+                }
 
-                // compress image..not sure if this is necessary
-                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                petProfileImage.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-                String encodedImgae = android.util.Base64.encodeToString(byteArrayOutputStream.toByteArray(),android.util.Base64.DEFAULT);
+                // alert if no name has been entered
+                if(petName.equals(""))
+                {
+                    Log.d(TAG,"No name was entered should pop up an alert");
+                }
+
+                Log.d(TAG,"petSex: " + petSex + " petName: " + petName + " petBday: " + petBday + "petWeight: " + petWeight);
                 Log.d(TAG,"gotImage: " + gotImage);
 
-                Log.d(TAG,"petSex: " + petSex + " petName: " + petName + " petBday: " + petBday);
+                Bitmap petProfileImage;
+                String encodedImage;
+                if(gotImage == true)
+                {
+                    // Get Bitmap of image
+                    petProfileImage = ((BitmapDrawable)petImage.getDrawable()).getBitmap();
+                    // compress image..not sure if this is necessary
+                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                    petProfileImage.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                    encodedImage = android.util.Base64.encodeToString(byteArrayOutputStream.toByteArray(),android.util.Base64.DEFAULT);
+                }
+                else
+                {
+                    // set petProfileImage to a default image....
+                }
 
-                // if gotImage is false.. lets set a default one
-
-                // whats the validation..just name..?
-                // after data validation,,add new data to petdatabase and return to home page
-
+                // at this point should add to database and return to maincard page
 
                 Intent fBi = new Intent(create_pet.this, petCardMainPage.class);
                 startActivity(fBi);

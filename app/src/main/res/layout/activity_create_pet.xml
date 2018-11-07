@@ -114,33 +114,83 @@
                 android:layout_marginTop="180dp"
                 android:entries="@array/create_pet_sex"
                 android:paddingHorizontal="40dp"
-                android:spinnerMode="dialog"
+                android:spinnerMode="dropdown"
+                android:popupBackground="@color/white"
+                android:background="@drawable/createpet_edittextbackground"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_marginTop="250dp"
+                android:layout_alignBaseline="@id/numberpicker_weightWholeNum"
+                android:layout_alignEnd="@+id/edittext_birthdate"
+                android:layout_alignStart="@+id/edittext_birthdate"
                 android:background="@drawable/createpet_edittextbackground"/>
 
 
-            <NumberPicker
-                android:id="@+id/numberpicker_weight"
+            <TextView
+                android:id="@+id/weight_tagSelect"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="250dp"
-                android:layout_toStartOf="@+id/blankspace"/>
-
-
-            <Space
-                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:id="@+id/blankspace"
+                android:layout_alignStart="@+id/edittext_birthdate"
                 android:layout_marginTop="250dp"
-                />
+                android:paddingHorizontal="40dp"
+                android:text="Select"
+                android:textSize="30sp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/weight_tagWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/weight_tagSelect"
+                android:layout_alignStart="@+id/edittext_birthdate"
+                android:paddingHorizontal="40dp"
+                android:text="Weight"
+                android:textSize="30sp"
+                android:textColor="@color/black" />
 
 
             <NumberPicker
-                android:id="@+id/numberpicker_length"
+                android:id="@+id/numberpicker_weightWholeNum"
+                android:theme="@style/AppTheme.Picker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="250dp"
-                android:layout_toEndOf="@+id/blankspace"/>
+                android:layout_marginTop="260dp"
+                android:layout_toRightOf="@id/weight_tagWeight"
+                android:background="@drawable/createpet_numberpickerbackground"
+                android:descendantFocusability="blocksDescendants"  />
+
+            <TextView
+                android:id="@+id/decimal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="."
+                android:textSize="30dp"
+                android:layout_toRightOf="@id/numberpicker_weightWholeNum"
+                android:textColor="@color/black"
+                android:layout_marginTop="335dp" />
+
+            <NumberPicker
+                android:id="@+id/numberpicker_weightDecimalNum"
+                android:theme="@style/AppTheme.Picker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="260dp"
+                android:layout_toRightOf="@id/decimal"
+                android:background="@drawable/createpet_numberpickerbackground"
+                android:descendantFocusability="blocksDescendants"  />
+
+            <TextView
+                android:id="@+id/lb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/numberpicker_weightDecimalNum"
+                android:text="lb"
+                android:textSize="30dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="335dp" />
 
 
         </RelativeLayout>
@@ -152,11 +202,11 @@
     <!-- view build.gradle for needed dependency -->
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/pet_imageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="55dp"
         app:civ_border_width="2dp"
         app:civ_border_color="#000000"
         android:src="@drawable/clicktoaddphoto" />
