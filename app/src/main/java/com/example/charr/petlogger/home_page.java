@@ -25,6 +25,7 @@ public class home_page extends AppCompatActivity {
         cardList.add(new card_item(R.drawable.snake4, "snek4", "Blade Clown"));
         cardList.add(new card_item(R.drawable.snake5, "snek5", "Leopard Clown"));
         cardList.add(new card_item(R.drawable.snake6, "snek6", "Pastel Clown"));
+        //just so i can try to commit
 
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
