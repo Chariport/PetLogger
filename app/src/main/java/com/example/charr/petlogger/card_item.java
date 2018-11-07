@@ -2,12 +2,12 @@ package com.example.charr.petlogger;
 
 import android.support.v7.app.AppCompatActivity;
 
-public class CardItem extends AppCompatActivity {
+public class card_item extends AppCompatActivity {
     private int mImageResource;
     private String mName;
     private String mMorph;
 
-    public CardItem(int imageResource, String name, String morph)
+    public card_item(int imageResource, String name, String morph)
     {
         mImageResource = imageResource;
         mName = name;

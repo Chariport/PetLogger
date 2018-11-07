@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:padding="10dp"
-    tools:context=".petCardMainPage">
+    tools:context=".home_page">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"

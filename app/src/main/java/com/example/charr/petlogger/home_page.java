@@ -6,9 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-public class petCardMainPage extends AppCompatActivity {
+public class home_page extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -17,18 +16,21 @@ public class petCardMainPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        
-        setContentView(R.layout.activity_pet_card_main_page);
+        setContentView(R.layout.activity_home_page);
 
-        ArrayList<CardItem> cardList = new ArrayList<>();
-        cardList.add(new CardItem(R.drawable.snake2, "Kenny", "Piebald"));
-        cardList.add(new CardItem(R.drawable.snake, "Sagay", "CoralGLow Clown"));
-        cardList.add(new CardItem(R.drawable.snake3, "Maddie", "Firefly het Piebald"));
+        ArrayList<card_item> cardList = new ArrayList<>();
+        cardList.add(new card_item(R.drawable.snake2, "Kenny", "Piebald"));
+        cardList.add(new card_item(R.drawable.snake, "Sagay", "CoralGLow Clown"));
+        cardList.add(new card_item(R.drawable.snake3, "Maddie", "Firefly het Piebald"));
+        cardList.add(new card_item(R.drawable.snake4, "snek4", "Blade Clown"));
+        cardList.add(new card_item(R.drawable.snake5, "snek5", "Leopard Clown"));
+        cardList.add(new card_item(R.drawable.snake6, "snek6", "Pastel Clown"));
 
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new CardAdapter(cardList);
+        mAdapter = new card_adapter(cardList);
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);

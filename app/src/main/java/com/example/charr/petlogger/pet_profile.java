@@ -27,7 +27,7 @@ public class pet_profile extends AppCompatActivity {
     }
 
     public void openMainPage(){
-        Intent intent = new Intent(this, petCardMainPage.class);
+        Intent intent = new Intent(this, home_page.class);
         startActivity(intent);
     }
 

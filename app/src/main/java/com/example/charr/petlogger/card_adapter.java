@@ -10,9 +10,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder>
+public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHolder>
 {
-    private ArrayList<CardItem> mCardList;
+    private ArrayList<card_item> mCardList;
 
     public static class CardViewHolder extends RecyclerView.ViewHolder
     {
@@ -29,7 +29,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         }
     }
 
-    public CardAdapter(ArrayList<CardItem> cardList)
+    public card_adapter(ArrayList<card_item> cardList)
     {
         mCardList = cardList;
     }
@@ -38,7 +38,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     @Override
     public CardViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
     {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_reptile_card, viewGroup, false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_card_item, viewGroup, false);
 
         return new CardViewHolder(v);
     }
@@ -46,7 +46,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     @Override
     public void onBindViewHolder(@NonNull CardViewHolder cardViewHolder, int i)
     {
-        CardItem currItem = mCardList.get(i);
+        card_item currItem = mCardList.get(i);
 
         cardViewHolder.mImageView.setImageResource(currItem.getImageResource());
         cardViewHolder.mName.setText(currItem.getName());
