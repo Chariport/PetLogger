@@ -75,6 +75,7 @@
 
 
             <EditText
+                android:autofillHints="@string/hint_name"
                 android:id="@+id/edittext_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,6 +88,7 @@
                 android:textColorHint="@android:color/black"
                 android:textSize="30sp"
                 android:textColor="@color/black"
+                android:inputType="textPersonName"
                 android:background="@drawable/createpet_edittextbackground"/>
 
 
@@ -118,9 +120,10 @@
                 android:popupBackground="@color/white"
                 android:background="@drawable/createpet_edittextbackground"/>
 
+
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="200dp"
+                android:layout_height="120dp"
                 android:layout_marginTop="250dp"
                 android:layout_alignBaseline="@id/numberpicker_weightWholeNum"
                 android:layout_alignEnd="@+id/edittext_birthdate"
@@ -134,11 +137,12 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_alignStart="@+id/edittext_birthdate"
-                android:layout_marginTop="250dp"
+                android:layout_marginTop="265dp"
                 android:paddingHorizontal="40dp"
-                android:text="Select"
+                android:text="@string/selectTag"
                 android:textSize="30sp"
                 android:textColor="@color/black" />
+
 
             <TextView
                 android:id="@+id/weight_tagWeight"
@@ -147,50 +151,63 @@
                 android:layout_below="@+id/weight_tagSelect"
                 android:layout_alignStart="@+id/edittext_birthdate"
                 android:paddingHorizontal="40dp"
-                android:text="Weight"
+                android:text="@string/weightTag"
                 android:textSize="30sp"
                 android:textColor="@color/black" />
+
+
+            <Space
+                android:id="@+id/blankspace"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="260dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
 
             <NumberPicker
                 android:id="@+id/numberpicker_weightWholeNum"
                 android:theme="@style/AppTheme.Picker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="100dp"
                 android:layout_marginTop="260dp"
-                android:layout_toRightOf="@id/weight_tagWeight"
+                android:layout_toEndOf="@id/blankspace"
                 android:background="@drawable/createpet_numberpickerbackground"
                 android:descendantFocusability="blocksDescendants"  />
+
 
             <TextView
                 android:id="@+id/decimal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="."
-                android:textSize="30dp"
-                android:layout_toRightOf="@id/numberpicker_weightWholeNum"
+                android:text="@string/period"
+                android:textSize="30sp"
+                android:layout_toEndOf="@id/numberpicker_weightWholeNum"
                 android:textColor="@color/black"
-                android:layout_marginTop="335dp" />
+                android:layout_marginTop="290dp" />
+
 
             <NumberPicker
                 android:id="@+id/numberpicker_weightDecimalNum"
                 android:theme="@style/AppTheme.Picker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="100dp"
                 android:layout_marginTop="260dp"
-                android:layout_toRightOf="@id/decimal"
+                android:layout_toEndOf="@id/decimal"
                 android:background="@drawable/createpet_numberpickerbackground"
                 android:descendantFocusability="blocksDescendants"  />
+
 
             <TextView
                 android:id="@+id/lb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/numberpicker_weightDecimalNum"
-                android:text="lb"
-                android:textSize="30dp"
+                android:layout_toEndOf="@id/numberpicker_weightDecimalNum"
+                android:paddingStart="3dp"
+                android:paddingEnd="0dp"
+                android:text="@string/weightUnit"
+                android:textSize="30sp"
                 android:textColor="@color/black"
-                android:layout_marginTop="335dp" />
+                android:layout_marginTop="290dp" />
 
 
         </RelativeLayout>

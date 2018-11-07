@@ -6,14 +6,15 @@
     <string name="create_pet">Create Pet</string>
     <string name="back">Back</string>
     <string name="done">Done</string>
-    <string name="hint_name">Enter Name...</string>
-    <string name="hint_birthdate">Enter Birth Date...</string>
-    <string name="hint_weight">Select a Weight...</string>
-    <string name="hint_length">Select a Length...</string>
-
+    <string name="hint_name">Enter Name&#8230;</string>
+    <string name="hint_birthdate">Enter Birth Date&#8230;</string>
+    <string name="selectTag">Select</string>
+    <string name="weightTag">Weight</string>
+    <string name="period">.</string>
+    <string name="weightUnit">lb</string>
 
     <string-array name="create_pet_sex">
-        <item>Select Sex...</item>
+        <item>Select Sex&#8230;</item>
         <item>Male</item>
         <item>Female</item>
     </string-array>
