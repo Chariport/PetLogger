@@ -110,7 +110,7 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
             case R.id.cancelButton:
                 // need to add are you sure alert...
                 Log.d(TAG,"cancel button was clicked");
-                Intent cBi = new Intent(create_pet.this, petCardMainPage.class);
+                Intent cBi = new Intent(create_pet.this, home_page.class);
                 startActivity(cBi);
                 break;
             case R.id.finishButton:
@@ -128,7 +128,7 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
 
                 Log.d(TAG,"petSex: " + petSex + " petType: " + petType + " petName: " + petName + " petBday: " + petBday);
 
-                Intent fBi = new Intent(create_pet.this, petCardMainPage.class);
+                Intent fBi = new Intent(create_pet.this, home_page.class);
                 startActivity(fBi);
                 break;
         }
