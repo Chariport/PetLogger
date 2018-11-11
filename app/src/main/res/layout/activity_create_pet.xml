@@ -13,7 +13,7 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/edittext_name"
+            android:id="@+id/petName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -23,15 +23,16 @@
             android:hint="Enter Pet's Name..."
             android:inputType="textPersonName"
             android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:nextFocusDown="@+id/petBday"/>
 
         <TextView
-            android:id="@+id/edittext_birthdate"
+            android:id="@+id/petBday"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_below="@+id/edittext_name"
-            android:layout_alignStart="@+id/edittext_name"
-            android:layout_alignLeft="@+id/edittext_name"
+            android:layout_below="@+id/petName"
+            android:layout_alignStart="@+id/petName"
+            android:layout_alignLeft="@+id/petName"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
             android:layout_marginTop="21dp"
@@ -39,7 +40,8 @@
             android:hint="Enter Pet's Birthday..."
             android:inputType="date"
             android:textColor="#000000"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:nextFocusDown="@+id/spinnerSex"/>
 
         <Button
             android:id="@+id/cancelButton"
@@ -70,8 +72,8 @@
             android:id="@+id/spinnerSex"
             android:layout_width="163dp"
             android:layout_height="40dp"
-            android:layout_alignEnd="@+id/edittext_name"
-            android:layout_alignRight="@+id/edittext_name"
+            android:layout_alignEnd="@+id/petName"
+            android:layout_alignRight="@+id/petName"
             android:layout_alignParentTop="true"
             android:layout_marginTop="477dp"
             android:layout_marginEnd="-43dp"
@@ -108,8 +110,8 @@
             android:id="@+id/numberpicker_weightWholeNum"
             android:layout_width="49dp"
             android:layout_height="111dp"
-            android:layout_alignEnd="@+id/edittext_name"
-            android:layout_alignRight="@+id/edittext_name"
+            android:layout_alignEnd="@+id/petName"
+            android:layout_alignRight="@+id/petName"
             android:layout_alignParentTop="true"
             android:layout_marginStart="-34dp"
             android:layout_marginTop="530dp"
@@ -138,8 +140,8 @@
             android:layout_width="49dp"
             android:layout_height="111dp"
             android:layout_alignTop="@+id/numberpicker_weightWholeNum"
-            android:layout_alignEnd="@+id/edittext_name"
-            android:layout_alignRight="@+id/edittext_name"
+            android:layout_alignEnd="@+id/petName"
+            android:layout_alignRight="@+id/petName"
             android:layout_alignParentTop="true"
             android:layout_marginStart="-69dp"
             android:layout_marginTop="530dp"

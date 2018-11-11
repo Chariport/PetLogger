@@ -19,12 +19,9 @@ import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
-import android.widget.TabHost;
 import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
-import java.lang.reflect.Array;
-import java.util.Base64;
 import java.util.Calendar;
 
 public class create_pet extends AppCompatActivity implements View.OnClickListener
@@ -69,8 +66,8 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
 
 
         //set up TextViews
-        name = (TextView)findViewById(R.id.edittext_name);
-        bday = (TextView) findViewById(R.id.edittext_birthdate);
+        name = (TextView)findViewById(R.id.petName);
+        bday = (TextView) findViewById(R.id.petBday);
         bday.setOnClickListener(this);
 
         //set up DateSetListener
@@ -126,7 +123,7 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
 
         switch(v.getId())
         {
-            case R.id.edittext_birthdate:
+            case R.id.petBday:
                 Calendar cal = Calendar.getInstance();
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
