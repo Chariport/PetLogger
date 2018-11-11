@@ -3,5 +3,7 @@
     <color name="colorPrimary">#034452</color>
     <color name="colorPrimaryDark">#96bb41</color>
     <color name="colorAccent">#ffffff</color>
-    <color name="gray">#ffffff</color>
+    <color name="gray">#898989</color>
+    <color name="black">#000000</color>
+    <color name="createpet_edittext_bordercolor">#cce8db</color>
 </resources>

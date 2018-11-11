@@ -12,12 +12,10 @@
     <string name="weightTag">Weight</string>
     <string name="period">.</string>
     <string name="weightUnit">lb</string>
-
+    <string name="sex_prompt">Select a Sex</string>
     <string-array name="create_pet_sex">
         <item>Select Sex&#8230;</item>
-        <item>Male</item>
-        <item>Female</item>
+        <item>Male ♂</item>
+        <item>Female ♀</item>
     </string-array>
-
-
 </resources>
