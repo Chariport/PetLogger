@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:padding="10dp"
+    android:background="@drawable/main_activity_background"
+    android:paddingLeft="15dp"
+    android:paddingTop="15dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="15dp"
     tools:context=".home_page">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="206dp"
+        android:layout_height="76dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="73dp"
+        android:layout_marginTop="-15dp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/title"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="1dp"
         android:scrollbars="vertical" />
 
     <android.support.design.widget.FloatingActionButton
@@ -21,7 +37,12 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="11dp"
-        android:clickable="true" />
+        android:clickable="true"
+        android:onClick="fromHomePageToCreatePet"
+        android:tint="@color/colorAccent"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:rippleColor="@color/colorAccent"
+        app:srcCompat="@android:drawable/ic_menu_add" />
 
 
 </RelativeLayout>
