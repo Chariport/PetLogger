@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,128 +9,225 @@
     android:fillViewport="true"
     tools:context=".create_pet">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="5dp"
+        android:background="@android:color/holo_red_light"
+        android:fontFamily="casual"
+        android:text="@string/back"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/addPhotoButton"
-            android:layout_width="232dp"
-            android:layout_height="232dp"
-            android:layout_alignStart="@+id/finishButton"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="38dp"
-            android:layout_marginTop="75dp"
-            android:background="@drawable/defaultsnake" />
 
-        <EditText
-            android:id="@+id/petName"
-            android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/finishButton"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/holo_green_dark"
+        android:fontFamily="casual"
+        android:text="@string/done"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/text_Create_Pet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_toEndOf="@id/cancelButton"
+        android:layout_toStartOf="@+id/finishButton"
+        android:fontFamily="casual"
+        android:text="@string/create_pet"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginBottom="10dp"
+        android:background="#FFFFFF">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="342dp"
-            android:layout_toEndOf="@+id/cancelButton"
-            android:ems="10"
-            android:hint="Enter Pet's Name..."
-            android:inputType="textPersonName"
-            android:textColor="#FFFFFF"
-            android:textSize="20dp" />
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/petBday"
-            android:layout_width="214dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/petName"
-            android:layout_alignStart="@+id/petName"
-            android:layout_alignLeft="@+id/petName"
-            android:layout_marginStart="7dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginTop="21dp"
-            android:ems="10"
-            android:hint=" Enter Pet's Birthday..."
-            android:inputType="date"
-            android:textColor="#000000"
-            android:textSize="20dp" />
 
-        <Button
-            android:id="@+id/cancelButton"
-            android:layout_width="86dp"
-            android:layout_height="52dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="1dp"
-            android:layout_marginLeft="1dp"
-            android:layout_marginTop="11dp"
-            android:background="@drawable/cancelbutton" />
+            <EditText
+                android:autofillHints="@string/hint_name"
+                android:id="@+id/edittext_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignEnd="@+id/edittext_birthdate"
+                android:layout_alignStart="@+id/edittext_birthdate"
+                android:layout_marginTop="40dp"
+                android:paddingHorizontal="40dp"
+                android:hint="@string/hint_name"
+                android:textColorHint="@android:color/black"
+                android:textSize="30sp"
+                android:textColor="@color/black"
+                android:inputType="textPersonName"
+                android:background="@drawable/createpet_edittextbackground"/>
 
-        <Button
-            android:id="@+id/finishButton"
-            android:layout_width="wrap_content"
-            android:layout_height="66dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="57dp"
-            android:layout_marginEnd="44dp"
-            android:layout_marginRight="66dp"
-            android:layout_marginBottom="34dp"
-            android:background="@drawable/savebutton" />
 
-        <Spinner
-            android:id="@+id/spinnerSex"
-            android:layout_width="134dp"
-            android:layout_height="43dp"
-            android:layout_alignEnd="@+id/petName"
-            android:layout_alignRight="@+id/petName"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="484dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginRight="0dp"
-            android:entries="@array/create_pet_sex"
-            android:prompt="@string/sex_prompt" />
+            <TextView
+                android:id="@+id/edittext_birthdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="110dp"
+                android:paddingHorizontal="40dp"
+                android:hint="@string/hint_birthdate"
+                android:textColorHint="@android:color/black"
+                android:textSize="30sp"
+                android:textColor="@color/black"
+                android:background="@drawable/createpet_edittextbackground" />
 
-        <Spinner
-            android:id="@+id/spinnerType"
-            android:layout_width="134dp"
-            android:layout_height="43dp"
-            android:layout_alignEnd="@+id/petName"
-            android:layout_alignRight="@+id/petName"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="546dp"
-            android:layout_marginEnd="-9dp"
-            android:layout_marginRight="-9dp"
-            android:entries="@array/create_pet_type"
-            android:prompt="@string/type_prompt" />
 
-        <TextView
-            android:id="@+id/textViewSex"
-            android:layout_width="89dp"
-            android:layout_height="42dp"
-            android:layout_alignTop="@+id/spinnerSex"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="36dp"
-            android:layout_marginRight="36dp"
-            android:layout_toStartOf="@+id/spinnerSex"
-            android:layout_toLeftOf="@+id/spinnerSex"
-            android:text="Select Sex:"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16dp" />
+            <Spinner
+                android:id="@+id/spinnerSex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignEnd="@+id/edittext_birthdate"
+                android:layout_alignStart="@+id/edittext_birthdate"
+                android:layout_marginTop="180dp"
+                android:entries="@array/create_pet_sex"
+                android:paddingHorizontal="40dp"
+                android:spinnerMode="dropdown"
+                android:popupBackground="@color/white"
+                android:background="@drawable/createpet_edittextbackground"/>
 
-        <TextView
-            android:id="@+id/textViewType"
-            android:layout_width="89dp"
-            android:layout_height="42dp"
-            android:layout_alignTop="@+id/spinnerType"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="34dp"
-            android:layout_marginRight="34dp"
-            android:layout_toStartOf="@+id/spinnerSex"
-            android:layout_toLeftOf="@+id/spinnerSex"
-            android:text="Select Type:"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16dp" />
 
-    </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:layout_marginTop="250dp"
+                android:layout_alignBaseline="@id/numberpicker_weightWholeNum"
+                android:layout_alignEnd="@+id/edittext_birthdate"
+                android:layout_alignStart="@+id/edittext_birthdate"
+                android:background="@drawable/createpet_edittextbackground"/>
 
-</ScrollView>
+
+            <TextView
+                android:id="@+id/weight_tagSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignStart="@+id/edittext_birthdate"
+                android:layout_marginTop="265dp"
+                android:paddingHorizontal="40dp"
+                android:text="@string/selectTag"
+                android:textSize="30sp"
+                android:textColor="@color/black" />
+
+
+            <TextView
+                android:id="@+id/weight_tagWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/weight_tagSelect"
+                android:layout_alignStart="@+id/edittext_birthdate"
+                android:paddingHorizontal="40dp"
+                android:text="@string/weightTag"
+                android:textSize="30sp"
+                android:textColor="@color/black" />
+
+
+            <Space
+                android:id="@+id/blankspace"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="260dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <NumberPicker
+                android:id="@+id/numberpicker_weightWholeNum"
+                android:theme="@style/AppTheme.Picker"
+                android:layout_width="50dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="260dp"
+                android:layout_toEndOf="@id/blankspace"
+                android:background="@drawable/createpet_numberpickerbackground"
+                android:descendantFocusability="blocksDescendants"  />
+
+
+            <TextView
+                android:id="@+id/decimal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/period"
+                android:textSize="30sp"
+                android:layout_toEndOf="@id/numberpicker_weightWholeNum"
+                android:textColor="@color/black"
+                android:layout_marginTop="290dp" />
+
+
+            <NumberPicker
+                android:id="@+id/numberpicker_weightDecimalNum"
+                android:theme="@style/AppTheme.Picker"
+                android:layout_width="50dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="260dp"
+                android:layout_toEndOf="@id/decimal"
+                android:background="@drawable/createpet_numberpickerbackground"
+                android:descendantFocusability="blocksDescendants"  />
+
+
+            <TextView
+                android:id="@+id/lb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/numberpicker_weightDecimalNum"
+                android:paddingStart="3dp"
+                android:paddingEnd="0dp"
+                android:text="@string/weightUnit"
+                android:textSize="30sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="290dp" />
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+    <!-- view build.gradle for needed dependency -->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/pet_imageView"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#000000"
+        android:src="@drawable/clicktoaddphoto" />
+
+
+</RelativeLayout>
