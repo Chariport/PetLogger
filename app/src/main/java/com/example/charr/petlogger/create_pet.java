@@ -192,7 +192,7 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
                 }
 
                 // at this point should add to database and return to maincard page
-              
+              //commit
 
                 //homeActivity.getHomeInstance().insertCard(new card_item(R.drawable.snake, petName, "null"));
 
