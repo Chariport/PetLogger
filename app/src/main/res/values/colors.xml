@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#034452</color>
+    <color name="colorPrimaryDark">#96bb41</color>
     <color name="colorAccent">#ffffff</color>
+<<<<<<<<< Temporary merge branch 1
 
     <color name="gradientEnd">#00cccc</color>
     <color name="gradientStart">#86ed7d</color>
@@ -11,4 +12,7 @@
     <color name="white">#FFFFFF</color>
 
     <color name="createpet_edittext_bordercolor">#cce8db</color>
+=========
+    <color name="gray">#ffffff</color>
+>>>>>>>>> Temporary merge branch 2
 </resources>

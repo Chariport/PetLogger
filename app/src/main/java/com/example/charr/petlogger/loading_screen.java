@@ -8,7 +8,7 @@ import android.os.Handler;
 
 public class loading_screen extends AppCompatActivity {
 
-    private static int TIME_OUT = 10; //Time to launch the another activity
+    private static int TIME_OUT = 1200; //Time to launch the another activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

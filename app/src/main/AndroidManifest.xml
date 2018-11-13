@@ -8,6 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+<<<<<<<<< Temporary merge branch 1
         android:theme="@style/AppTheme">
         <activity android:name=".home_page" />
         <activity android:name=".create_pet" />
@@ -15,12 +16,25 @@
         <activity android:name=".pet_profile" />
         <activity android:name=".weight_log_entry" />
         <activity android:name=".loading_screen">
+=========
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".petCardMainPage">
+>>>>>>>>> Temporary merge branch 2
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<<<< Temporary merge branch 1
+=========
+        <activity
+            android:name=".create_pet"
+            android:label="Create Pet">
+        </activity>
+>>>>>>>>> Temporary merge branch 2
     </application>
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
 
 </manifest>

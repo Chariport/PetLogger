@@ -1,6 +1,5 @@
 package com.example.charr.petlogger;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -70,8 +69,8 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
 
 
         //set up TextViews
-        name = findViewById(R.id.edittext_name);
-        bday = findViewById(R.id.edittext_birthdate);
+        name = (TextView)findViewById(R.id.edittext_name);
+        bday = (TextView) findViewById(R.id.edittext_birthdate);
         bday.setOnClickListener(this);
 
         //set up DateSetListener
@@ -88,12 +87,12 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
         };
 
         //set up imageView
-        petImage = findViewById(R.id.pet_imageView);
+        petImage = (ImageView)findViewById(R.id.pet_imageView);
         petImage.setOnClickListener(this);
 
         //set up numberPickers
-        leftOfDecimal = findViewById(R.id.numberpicker_weightWholeNum);
-        rightOfDecimal = findViewById(R.id.numberpicker_weightDecimalNum);
+        leftOfDecimal = (NumberPicker)findViewById(R.id.numberpicker_weightWholeNum);
+        rightOfDecimal = (NumberPicker)findViewById(R.id.numberpicker_weightDecimalNum);
 
         leftOfDecimal.setMinValue(0);
         leftOfDecimal.setMaxValue(20);
@@ -143,14 +142,12 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
                 dialog.show();
 
                 break;
-
             case R.id.cancelButton:
                 // need to add are you sure alert...
                 Log.d(TAG,"cancel button was clicked");
                 Intent cBi = new Intent(create_pet.this, home_page.class);
                 startActivity(cBi);
                 break;
-
             case R.id.finishButton:
                 Log.d(TAG,"finish button was clicked");
 
@@ -192,9 +189,6 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
                 }
 
                 // at this point should add to database and return to maincard page
-              
-
-                //homeActivity.getHomeInstance().insertCard(new card_item(R.drawable.snake, petName, "null"));
 
                 Intent fBi = new Intent(create_pet.this, home_page.class);
                 startActivity(fBi);
