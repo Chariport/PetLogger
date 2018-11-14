@@ -10,6 +10,10 @@ import android.view.View;
 import java.util.ArrayList;
 
 public class home_page extends AppCompatActivity {
+    //private static ArrayList<card_item> cardList;
+
+    private card_list cardList = card_list.getmInstance();
+
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -17,18 +21,19 @@ public class home_page extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       
         setContentView(R.layout.activity_home_page);
 
-        ArrayList<card_item> cardList = new ArrayList<>();
-        cardList.add(new card_item(R.drawable.snake2, "Kenny", "Piebald"));
-        cardList.add(new card_item(R.drawable.snake, "Sagay", "CoralGLow Clown"));
-        cardList.add(new card_item(R.drawable.snake3, "Maddie", "Firefly het Piebald"));
-        cardList.add(new card_item(R.drawable.snake4, "snek4", "Blade Clown"));
-        cardList.add(new card_item(R.drawable.snake5, "snek5", "Leopard Clown"));
-        cardList.add(new card_item(R.drawable.snake6, "snek6", "Pastel Clown"));
-        //just so i can try to commit
+        buildRecyclerView();
+    }
 
+    public void deleteCard()
+    {
+
+    }
+
+
+    public void buildRecyclerView()
+    {
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
 

@@ -15,6 +15,8 @@
 
         <ImageView
             android:id="@+id/image"
+            android:src="@drawable/snake"
+            android:scaleType="fitXY"
             android:layout_width="180dp"
             android:layout_height="130dp"
             android:layout_below="@+id/name"
@@ -34,8 +36,9 @@
             android:textStyle="bold" />
 
         <TextView
-            android:layout_width="47dp"
+            android:id="@+id/sex"
             android:text="M"
+            android:layout_width="47dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:fontFamily="casual"
@@ -63,13 +66,13 @@
 
         <TextView
             android:id="@+id/lastFed"
+            android:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="49dp"
-            android:layout_marginEnd="129dp"
-            android:text="TextView" />
+            android:layout_marginEnd="129dp" />
 
 
     </RelativeLayout>

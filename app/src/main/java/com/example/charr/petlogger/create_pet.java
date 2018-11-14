@@ -22,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class create_pet extends AppCompatActivity implements View.OnClickListener
@@ -35,7 +36,10 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
     public DatePickerDialog.OnDateSetListener bdayDateSetListener;
     public ImageView petImage;
     private static final int RESULT_LOAD_IMAGE = 1;
-    public boolean gotImage = false; //used to see if user selected an image
+    public boolean gotImage = false; //used to see if user selected an image;
+
+    private card_list cardList = card_list.getmInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -171,7 +175,7 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
 
                 Bitmap petProfileImage;
                 String encodedImage;
-                if(gotImage == true)
+                if(gotImage)
                 {
                     // Get Bitmap of image
                     petProfileImage = ((BitmapDrawable)petImage.getDrawable()).getBitmap();
@@ -186,6 +190,11 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
                 }
 
                 // at this point should add to database and return to maincard page
+                if(petSex.equals("Male ♂")) {petSex = "♂";}
+                else if (petSex.equals("Female ♀")) {petSex = "♀";}
+
+                cardList.addToArray(new card_item(R.drawable.snake, petName, "test morph het example", petSex));
+
 
                 Intent fBi = new Intent(create_pet.this, home_page.class);
                 startActivity(fBi);
