@@ -8,13 +8,14 @@
     <string name="done">Done</string>
     <string name="hint_name">Enter Name&#8230;</string>
     <string name="hint_birthdate">Enter Birth Date&#8230;</string>
-    <string name="selectTag">Select</string>
+    <string name="selectTag">Select Weight:</string>
     <string name="weightTag">Weight</string>
     <string name="period">.</string>
-    <string name="weightUnit">lb</string>
+    <string name="weightUnit">g</string>
+    <string name="hintClick">click...</string>
+
 
     <string-array name="create_pet_sex">
-        <item>Select Sex&#8230;</item>
         <item>Male</item>
         <item>Female</item>
     </string-array>

@@ -3,6 +3,7 @@ package com.example.charr.petlogger;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
@@ -17,14 +18,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
-import android.widget.NumberPicker;
 import android.widget.Spinner;
-import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
-import java.lang.reflect.Array;
-import java.util.Base64;
 import java.util.Calendar;
 
 public class create_pet extends AppCompatActivity implements View.OnClickListener
@@ -33,12 +31,14 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
 
     public Spinner sex;
     public Button finish, cancel;
-    public TextView name, bday;
-    public NumberPicker leftOfDecimal, rightOfDecimal;
+    public TextView name, bday, weight;
     public DatePickerDialog.OnDateSetListener bdayDateSetListener;
     public ImageView petImage;
     private static final int RESULT_LOAD_IMAGE = 1;
     public boolean gotImage = false; //used to see if user selected an image
+
+    public String petSex, petName, petBdate, petWeight;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -48,11 +48,6 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
 
         Log.d(TAG,"in onCreate");
 
-        //to use this add things to the AndroidMaifest.xml...
-        //ActionBar actionBar = getSupportActionBar();
-        //actionBar.setHomeButtonEnabled(true);
-        //actionBar.setDisplayHomeAsUpEnabled(true);
-        //actionBar.setHomeAsUpIndicator();
 
         //set up buttons
         finish = (Button)findViewById(R.id.finishButton);
@@ -69,6 +64,7 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
 
 
         //set up TextViews
+        weight = (TextView) findViewById(R.id.edittextWeight);
         name = (TextView)findViewById(R.id.edittext_name);
         bday = (TextView) findViewById(R.id.edittext_birthdate);
         bday.setOnClickListener(this);
@@ -82,6 +78,9 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
                 month += 1; // starts at 0 for months...
                 Log.d(TAG, "onDateSet: mm/dd/yyyy: " + month + "/" + dayOfMonth + "/" + year);
                 String date =  month + "/" + dayOfMonth + "/" + year;
+
+                if(date.length() > 0)
+                    bday.setError(null);
                 bday.setText(date);
             }
         };
@@ -89,20 +88,6 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
         //set up imageView
         petImage = (ImageView)findViewById(R.id.pet_imageView);
         petImage.setOnClickListener(this);
-
-        //set up numberPickers
-        leftOfDecimal = (NumberPicker)findViewById(R.id.numberpicker_weightWholeNum);
-        rightOfDecimal = (NumberPicker)findViewById(R.id.numberpicker_weightDecimalNum);
-
-        leftOfDecimal.setMinValue(0);
-        leftOfDecimal.setMaxValue(20);
-        leftOfDecimal.setValue(0);
-        leftOfDecimal.setWrapSelectorWheel(true);
-
-        rightOfDecimal.setMinValue(0);
-        rightOfDecimal.setMaxValue(9);
-        rightOfDecimal.setValue(0);
-        rightOfDecimal.setWrapSelectorWheel(true);
     }
 
     @Override
@@ -151,27 +136,10 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
             case R.id.finishButton:
                 Log.d(TAG,"finish button was clicked");
 
-                // get entered values
-                String petSex = sex.getSelectedItem().toString();
-                String petName = name.getText().toString();
-                String petBday = bday.getText().toString();
-                double petWeight = (double)leftOfDecimal.getValue() + (double)rightOfDecimal.getValue()/10;
+                // get values
+                initialize();
 
-                // set pet sex to empty string if male/female not selected
-                if (petSex.equals("Select Sex..."))
-                {
-                    petSex = "";
-                }
-
-                // alert if no name has been entered
-                if(petName.equals(""))
-                {
-                    Log.d(TAG,"No name was entered should pop up an alert");
-                }
-
-                Log.d(TAG,"petSex: " + petSex + " petName: " + petName + " petBday: " + petBday + "petWeight: " + petWeight);
-                Log.d(TAG,"gotImage: " + gotImage);
-
+                // get image
                 Bitmap petProfileImage;
                 String encodedImage;
                 if(gotImage == true)
@@ -183,19 +151,36 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
                     petProfileImage.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
                     encodedImage = android.util.Base64.encodeToString(byteArrayOutputStream.toByteArray(),android.util.Base64.DEFAULT);
                 }
-                else
+                else // gotImage == false
                 {
                     // set petProfileImage to a default image....
+                    petProfileImage = BitmapFactory.decodeResource(getResources(),R.drawable.defaultpetimage);
                 }
 
-                // at this point should add to database and return to maincard page
 
-                Intent fBi = new Intent(create_pet.this, petCardMainPage.class);
-                startActivity(fBi);
+                Log.d(TAG,"petName: " + petName + " petBirthDate: " + petBdate + " petSex: " + petSex + " petWeight: " + petWeight);
+                Log.d(TAG,"gotImage: " + gotImage);
+
+
+                if(validateData() == false) // DATA VALIDATION - alert if no name has been entered
+                {
+                    // at this point should add to database and return to petCardMainPage page
+
+                    // maybe a toast message saying pet profile created/ view profile to log more info
+
+                    Intent fBi = new Intent(create_pet.this, petCardMainPage.class);
+                    startActivity(fBi);
+                }
+                else
+                {
+                    //toast up saying there are entry errors
+                    Toast.makeText(this, "Profile NOT created. See errors above.", Toast.LENGTH_LONG).show();
+                }
+
                 break;
 
              case R.id.pet_imageView:
-                 Log.d(TAG,"clicked on image view!! son!@");
+                 Log.d(TAG,"clicked on circular image view");
                  Intent galleryIntent = new Intent(
                          Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                  startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
@@ -212,5 +197,41 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
             Uri selectedImage = data.getData(); //address of image
             petImage.setImageURI(selectedImage);
         }
+    }
+
+    public void initialize()
+    {
+        petSex = sex.getSelectedItem().toString().trim();
+        petName = name.getText().toString().trim();
+        petBdate = bday.getText().toString().trim();
+        petWeight = weight.getText().toString().trim();
+    }
+
+    public boolean validateData()
+    {
+        boolean foundError = false;
+        if(petName.isEmpty() || petName.length() > 32)
+        {
+            name.setError("Name cannot be empty or exceed 32 characters.");
+            foundError = true;
+        }
+
+        if(petBdate.isEmpty())
+        {
+            bday.setError("Must enter a birth date.");
+            foundError = true;
+        }
+        else
+            bday.setError(null);
+
+        int integerPlaces = petWeight.indexOf(".");
+        int decimalPlaces = petWeight.length() - integerPlaces - 1;
+        if(petWeight.isEmpty() || decimalPlaces > 3 )
+        {
+            weight.setError("Weight cannot be empty and no more than 3 decimal places (ex: 00.123)");
+            foundError = true;
+        }
+
+        return foundError;
     }
 }
