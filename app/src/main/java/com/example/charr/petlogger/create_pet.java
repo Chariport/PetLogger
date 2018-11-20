@@ -23,6 +23,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
 public class create_pet extends AppCompatActivity implements View.OnClickListener
@@ -43,10 +46,10 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        Log.d(TAG,"in onCreate");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_pet);
-
-        Log.d(TAG,"in onCreate");
 
 
         //set up buttons
@@ -54,6 +57,7 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
         finish.setOnClickListener(this);
         cancel = (Button)findViewById(R.id.cancelButton);
         cancel.setOnClickListener(this);
+
 
         //set up Spinners
         sex = (Spinner)findViewById(R.id.spinnerSex);
@@ -69,6 +73,7 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
         bday = (TextView) findViewById(R.id.edittext_birthdate);
         bday.setOnClickListener(this);
 
+
         //set up DateSetListener
         bdayDateSetListener = new DatePickerDialog.OnDateSetListener()
         {
@@ -79,7 +84,7 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
                 Log.d(TAG, "onDateSet: mm/dd/yyyy: " + month + "/" + dayOfMonth + "/" + year);
                 String date =  month + "/" + dayOfMonth + "/" + year;
 
-                if(date.length() > 0)
+                if(date.length() > 0) // Error set needs to be in here
                     bday.setError(null);
                 bday.setText(date);
             }
@@ -90,19 +95,16 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
         petImage.setOnClickListener(this);
     }
 
+
     @Override
     public void onBackPressed()
     {
         super.onBackPressed();
         Log.d(TAG,"in onBackPressed");
-        // need to add an alert
+        // maybe add alert on this
         // ex: are you sure you want to exit creating a pet profile...
     }
 
-    public void addPetImage(View v)
-    {
-        Log.d(TAG,"in addpetimage....");
-    }
 
     @Override
     public void onClick(View v)
@@ -125,10 +127,9 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
 
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable((Color.TRANSPARENT)));
                 dialog.show();
-
                 break;
             case R.id.cancelButton:
-                // need to add are you sure alert...
+                // need to add are you sure alert...maybe
                 Log.d(TAG,"cancel button was clicked");
                 Intent cBi = new Intent(create_pet.this, petCardMainPage.class);
                 startActivity(cBi);
@@ -161,6 +162,9 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
                 Log.d(TAG,"petName: " + petName + " petBirthDate: " + petBdate + " petSex: " + petSex + " petWeight: " + petWeight);
                 Log.d(TAG,"gotImage: " + gotImage);
 
+                // for future use on cards
+                Log.d(TAG,"Age of the pet is: " + calculateAge(petBdate));
+
 
                 if(validateData() == false) // DATA VALIDATION - alert if no name has been entered
                 {
@@ -188,6 +192,7 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
         }
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -199,6 +204,7 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
         }
     }
 
+
     public void initialize()
     {
         petSex = sex.getSelectedItem().toString().trim();
@@ -206,6 +212,7 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
         petBdate = bday.getText().toString().trim();
         petWeight = weight.getText().toString().trim();
     }
+
 
     public boolean validateData()
     {
@@ -226,12 +233,40 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
 
         int integerPlaces = petWeight.indexOf(".");
         int decimalPlaces = petWeight.length() - integerPlaces - 1;
-        if(petWeight.isEmpty() || decimalPlaces > 3 )
+        // if integerPlaces == -1 then there is no decimal in the number...
+        Log.d(TAG,"NUMBER OF INTEGER PLACES:: " + integerPlaces + "  number of decimal places:; " + decimalPlaces );
+
+        if(petWeight.isEmpty() || (decimalPlaces > 3  && integerPlaces != -1))
         {
             weight.setError("Weight cannot be empty and no more than 3 decimal places (ex: 00.123)");
             foundError = true;
         }
+        else
+            weight.setError(null);
 
         return foundError;
+    }
+
+    // for future reference
+    public static int calculateAge(String petBdate)
+    {
+        LocalDate currentDate = LocalDate.now();
+        // find index of the first / - > month is start to this index
+        // find index of the second / -> day is inbetween these two indexes
+        /// year is always the last 4 indexes
+        int indexOfFirstBackSlash = petBdate.indexOf("/");
+        int indexOfSecondBackSlash = petBdate.substring(indexOfFirstBackSlash+1,petBdate.length()).indexOf("/") + indexOfFirstBackSlash + 1;
+        int m = Integer.parseInt(petBdate.substring(0,indexOfFirstBackSlash ));
+        int d = Integer.parseInt(petBdate.substring(indexOfFirstBackSlash + 1, indexOfSecondBackSlash));
+        int y =  Integer.parseInt(petBdate.substring(petBdate.length() - 4));
+        //Log.d(TAG,"m d y respective:" + m + " " + d + " " + y);
+        LocalDate birthDateOfPet = LocalDate.of(y,m,d);
+
+        int ret = 0;
+        if ((birthDateOfPet != null) && (currentDate != null))
+        {
+            ret = Period.between(birthDateOfPet, currentDate).getYears();
+        }
+        return ret;
     }
 }
