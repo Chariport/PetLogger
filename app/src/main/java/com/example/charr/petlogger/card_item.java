@@ -1,23 +1,44 @@
 package com.example.charr.petlogger;
 
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.Date;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Calendar;
+
+import static android.webkit.ConsoleMessage.MessageLevel.LOG;
+
 
 public class card_item extends AppCompatActivity {
-    private int mImageResource;
-    private String mName;
-    private String mMorph;
-    private String mSex;
-    private String mBday;
+    final String TAG = this.getClass().getName();
 
-    public card_item(int imageResource, String name, String morph, String sex)
+    private String mMorph;  //not used yet ..set to default in constructor
+
+    private Bitmap mImage;
+    private String mName;
+    private Date mBdate;
+    private String mSex;
+    private double mWeight;
+
+
+    public card_item(Bitmap image, String name, Date date, String sex, double weight)
     {
-        mImageResource = imageResource;
+        mImage = image;
         mName = name;
-        mMorph = morph;
+        mBdate = date;
         mSex = sex;
+        mWeight = weight;
+
+        //set others to default
+        mMorph = "defaultMorph";
     }
 
-    public int getImageResource() {return mImageResource;}
+    public Bitmap getImage() { return mImage; }
 
     public String getName() {return mName;}
 
@@ -26,5 +47,23 @@ public class card_item extends AppCompatActivity {
     public String getSex()
     {
         return mSex;
+    }
+
+    public Date getBirthDate(){return mBdate;}
+
+    public int getAge(Date birthdate)
+    {
+        Calendar present = Calendar.getInstance();
+        Calendar past = Calendar.getInstance();
+        past.setTime(birthdate);
+
+        int years = 0;
+
+        while (past.before(present)) {
+            past.add(Calendar.YEAR, 1);
+            if (past.before(present)) {
+                years++;
+            }
+        } return years;
     }
 }

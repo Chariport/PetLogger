@@ -13,14 +13,14 @@
         android:layout_height="match_parent"
         android:layout_margin="5dp">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/image"
-            android:src="@drawable/snake"
-            android:scaleType="fitXY"
-            android:layout_width="180dp"
-            android:layout_height="130dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_below="@+id/name"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            app:civ_border_color="@color/black"
+            app:civ_border_width="2dp"/>
 
         <TextView
             android:id="@+id/name"
@@ -66,13 +66,23 @@
 
         <TextView
             android:id="@+id/lastFed"
-            android:text="TextView"
+            android:text="lastFed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="49dp"
             android:layout_marginEnd="129dp" />
+
+        <TextView
+            android:id="@+id/petsAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PetsAge"
+            android:textColor="@color/black"
+            android:layout_below="@+id/sex"
+            android:layout_alignRight="@+id/lastFed"
+            android:layout_marginTop="100dp"/>
 
 
     </RelativeLayout>

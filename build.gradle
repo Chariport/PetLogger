@@ -23,6 +23,10 @@ allprojects {
         maven {
             url "https://maven.google.com"
         }
+        // need this for create pet getting weight.
+        maven {
+            url "https://jitpack.io"
+        }
     }
 }
 

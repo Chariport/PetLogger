@@ -4,12 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_activity_background"
+    android:background="@drawable/create_pet_background_gradient"
     android:paddingLeft="15dp"
     android:paddingTop="15dp"
     android:paddingRight="15dp"
     android:paddingBottom="15dp"
     tools:context=".home_page">
+
+    <TextView
+        android:id="@+id/PetLogger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_toEndOf="@id/cancelButton"
+        android:fontFamily="@string/app_name"
+        android:text="PetLogger"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="42sp"
+        android:paddingLeft="10dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/title"

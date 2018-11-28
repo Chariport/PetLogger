@@ -16,53 +16,38 @@
          android:fitsSystemWindows. -->
 
 
-    <android.support.constraint.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/Icon"
-            android:layout_width="310dp"
-            android:layout_height="282dp"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="260dp"
-            android:layout_marginEnd="18dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="160dp"
             android:scaleType="fitXY"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.153"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/icon"
             tools:ignore="VectorDrawableCompat" />
 
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
-            android:layout_width="189dp"
-            android:layout_height="160dp"
-            android:layout_marginStart="96dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="96dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="450dp"
             android:indeterminateDrawable="@drawable/custom_progress"
             android:max="100"
             android:progress="0"
-            android:scaleType="fitXY"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Icon" />
+            android:scaleType="fitXY"/>
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="326dp"
-            android:layout_height="179dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.492"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             app:srcCompat="@drawable/petlogger_label" />
 
-    </android.support.constraint.ConstraintLayout>
+    </RelativeLayout>
 </FrameLayout>
