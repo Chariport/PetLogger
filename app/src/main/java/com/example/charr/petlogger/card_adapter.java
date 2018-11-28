@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHolder>
 {

@@ -31,4 +31,6 @@ public class card_list {
         list.add(card);
     }
 
+    //index
+
 }
