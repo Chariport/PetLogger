@@ -5,11 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
 
 public class home_page extends AppCompatActivity {
+    final String TAG = this.getClass().getName();
+
     //private static ArrayList<card_item> cardList;
 
     private card_list cardList = card_list.getmInstance();
@@ -49,4 +52,5 @@ public class home_page extends AppCompatActivity {
         Intent intent = new Intent(home_page.this, create_pet.class);
         startActivity(intent);
     }
+
 }

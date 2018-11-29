@@ -31,6 +31,11 @@ public class card_list {
         list.add(card);
     }
 
+    public void deleteFromArray(card_item card) { list.remove(card);}
+
+
     //index
+    public int getIndex(card_item card) { return list.indexOf(card); }
+
 
 }
