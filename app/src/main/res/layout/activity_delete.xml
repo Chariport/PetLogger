@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_margin="15dp"
+    android:layout_gravity="center"
+    tools:context=".activity_delete"
+    android:background="@color/hintcolor">
+
+    <TextView
+        android:id="@+id/nameToDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/deleteCancel"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/nameToDelete"
+        android:text="cancel"
+        android:onClick="clickedCancelButton"
+        />
+
+    <Button
+        android:id="@+id/deleteOk"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:text="OK"
+        android:layout_below="@+id/nameToDelete"
+        android:layout_toRightOf="@id/deleteCancel"
+        android:onClick="clickedOkButton"/>
+
+</RelativeLayout>

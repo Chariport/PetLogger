@@ -34,8 +34,9 @@ public class card_list {
     public void deleteFromArray(card_item card) { list.remove(card);}
 
 
-    //index
-    public int getIndex(card_item card) { return list.indexOf(card); }
+    //indexs
+    public int getIndex(card_item card){return list.indexOf(card);}
+    public card_item getObjectAtIndex(int indexofobj) { return list.get(indexofobj);}//(list.indexOf(indexofobj)); }
 
 
 }

@@ -41,7 +41,9 @@ public class home_page extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager(this);
+
         mAdapter = new card_adapter(cardList);
+
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
@@ -50,6 +52,7 @@ public class home_page extends AppCompatActivity {
     public void fromHomePageToCreatePet(View view)
     {
         Intent intent = new Intent(home_page.this, create_pet.class);
+        Log.d(TAG,"get context on homepage: " + home_page.this);
         startActivity(intent);
     }
 
