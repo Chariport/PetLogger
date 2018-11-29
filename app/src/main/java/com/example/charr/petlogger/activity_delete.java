@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class activity_delete extends AppCompatActivity
 {
@@ -14,12 +15,16 @@ public class activity_delete extends AppCompatActivity
 
 
     public Button cancel, ok;
+    public TextView nameToDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete);
+
+        nameToDelete = (TextView) findViewById(R.id.nameToDelete);
+        nameToDelete.setText("Delete " + cardList.getObjectAtIndex(getIntent().getExtras().getInt("indexToDelete")).getName() + "?");
     }
 
     public void clickedCancelButton(View view)
