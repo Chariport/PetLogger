@@ -233,9 +233,9 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
     public boolean validateData()
     {
         boolean foundError = false;
-        if(petName.isEmpty() || petName.length() > 32)
+        if(petName.isEmpty() || petName.length() > 16)
         {
-            name.setError("Name cannot be empty or exceed 32 characters.");
+            name.setError("Name cannot be empty or exceed 16 characters.");
             foundError = true;
         }
 

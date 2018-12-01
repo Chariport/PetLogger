@@ -22,6 +22,7 @@ public class card_item extends AppCompatActivity {
     private Bitmap mImage;
     private String mName;
     private Date mBdate;
+    private Date mLastFed;
     private String mSex;
     private double mWeight;
 
@@ -35,7 +36,8 @@ public class card_item extends AppCompatActivity {
         mWeight = weight;
 
         //set others to default
-        mMorph = "defaultMorph";
+        mLastFed = new Date(); // day of creation
+        mMorph = "Default from constructor"; // should be able to change on detailed profile
     }
 
     public Bitmap getImage() { return mImage; }
@@ -50,6 +52,28 @@ public class card_item extends AppCompatActivity {
     }
 
     public Date getBirthDate(){return mBdate;}
+
+    public Date getLastFed() {return mLastFed;}
+
+    public String dateObjectToMonthDayYearString(Date dd)
+    {
+        Calendar tempCalendar = Calendar.getInstance();
+        tempCalendar.setTime(dd);
+        // wanted format: month/day/year
+        String month = Integer.toString(tempCalendar.get(Calendar.MONTH) + 1);// off by one indexing
+        String day = Integer.toString(tempCalendar.get(Calendar.DAY_OF_MONTH));
+        String year = Integer.toString(tempCalendar.get(Calendar.YEAR));
+        return month+"/"+day+"/"+year;
+    }
+
+    public double getCurrentWeight()
+    {
+        // get the most recent entered weight..however we are storing it
+
+
+        // for now its just the entered weight on create.
+        return this.mWeight;
+    }
 
     public int getAge(Date birthdate)
     {

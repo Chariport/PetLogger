@@ -1,20 +1,26 @@
 package com.example.charr.petlogger;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHolder>
@@ -34,7 +40,7 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
 
         //public ImageView mImageView;
         public  ImageView mImageView;
-        public TextView mName, mMorph, mSex, mAge;
+        public TextView mName, mMorph, mSex, mAge, mWeight, mLastFed;
 
 
 
@@ -47,11 +53,16 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
 
             mImageView = itemView.findViewById(R.id.image);
             mName = itemView.findViewById(R.id.name);
-            mMorph = itemView.findViewById(R.id.morph);
+            mMorph = itemView.findViewById(R.id.morphValue);
             mSex =  itemView.findViewById(R.id.sex);
-            mAge = itemView.findViewById(R.id.petsAge);
+            mAge = itemView.findViewById(R.id.petsAgeValue);
+            mWeight = itemView.findViewById(R.id.currentWeightValue);
+            mLastFed = itemView.findViewById(R.id.lastFedValue);
 
-            // set onclick listener to detailed prof
+
+
+
+            // set onclick listener for entire card to detailed prof
             view.setOnClickListener(new View.OnClickListener()
             {
                 @Override public void onClick(View v)
@@ -62,7 +73,7 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
                 }
             });
 
-            // onLong click listener to delete this item
+            // onLong click listener for entire card to delete this item
             view.setOnLongClickListener(new View.OnLongClickListener()
             {
                 @Override
@@ -70,16 +81,20 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
                 {
                     Log.d(TAG,"long press on " + currentCard.getName());
 
-                    Intent intent = new Intent(view.getContext(),activity_delete.class);
-                    intent.putExtra("indexToDelete", mCardList.getIndex(currentCard));
+                    /*  old way to delete by new activity
+                    //Intent intent = new Intent(view.getContext(),activity_delete.class);
+                    //intent.putExtra("indexToDelete", mCardList.getIndex(currentCard));
 
-                    Log.d(TAG,"getContext of view: " + view.getContext().toString());
-                    Log.d(TAG,"index to get passed to deleteview :" + Integer.toString(mCardList.getIndex(currentCard)));
+                    //Log.d(TAG,"getContext of view: " + view.getContext().toString());
+                    //Log.d(TAG,"index to get passed to deleteview :" + Integer.toString(mCardList.getIndex(currentCard)));
 
-                    view.getContext().startActivity(intent);
+                    //view.getContext().startActivity(intent);
+                    */
 
 
-                    return true;//whats this here for?
+                    buildDeleteAlert(currentCard, view);
+
+                    return true;
                 }
             });
         }
@@ -112,12 +127,44 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
         cardViewHolder.mMorph.setText(cardViewHolder.currentCard.getMorph());
         cardViewHolder.mSex.setText(cardViewHolder.currentCard.getSex());
         cardViewHolder.mAge.setText(Integer.toString(cardViewHolder.currentCard.getAge(cardViewHolder.currentCard.getBirthDate())));
-        // need to add getAge method in card_item that converts the bdate to age based on todays date
+        cardViewHolder.mWeight.setText(Double.toString(cardViewHolder.currentCard.getCurrentWeight()) + " g");
+        cardViewHolder.mLastFed.setText(cardViewHolder.currentCard.dateObjectToMonthDayYearString(cardViewHolder.currentCard.getLastFed()));
     }
 
     @Override
     public int getItemCount()
     {
         return mCardList.getArray().size();
+    }
+
+    public static void buildDeleteAlert(final card_item currentCard, final View view)
+    {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(view.getContext(), R.style.AlertDialogCustom));//view.getContext());
+        builder.setTitle("Delete " + currentCard.getName() + " ?");
+        //alert  Yes button
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                Toast.makeText(view.getContext(), currentCard.getName() + " was deleted", Toast.LENGTH_LONG).show();
+                mCardList.deleteFromArray(mCardList.getObjectAtIndex(mCardList.getIndex(currentCard)));
+                Intent i = new Intent(view.getContext(),home_page.class);
+                view.getContext().startActivity(i);
+            }
+        });
+
+        //alert No button
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                dialog.cancel();
+            }
+        });
+        AlertDialog diag = builder.create();
+        diag.show();
+
     }
 }
