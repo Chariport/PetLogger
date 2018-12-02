@@ -19,6 +19,8 @@ public class card_item extends AppCompatActivity {
 
     private String mMorph;  //not used yet ..set to default in constructor
 
+    //we need to add some data structure here for feeding..
+
     private Bitmap mImage;
     private String mName;
     private Date mBdate;
@@ -83,11 +85,15 @@ public class card_item extends AppCompatActivity {
 
         int years = 0;
 
-        while (past.before(present)) {
+        while (past.before(present))
+        {
             past.add(Calendar.YEAR, 1);
-            if (past.before(present)) {
+            if (past.before(present))
+            {
                 years++;
             }
-        } return years;
+        }
+
+        return years;
     }
 }

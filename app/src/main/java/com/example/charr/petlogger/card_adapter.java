@@ -27,9 +27,7 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
 {
     final String TAG = this.getClass().getName();
 
-    public static card_list mCardList;
-    public static Context context;
-
+    private static card_list mCardList;
 
     public static class CardViewHolder extends RecyclerView.ViewHolder
     {
@@ -43,13 +41,11 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
         public TextView mName, mMorph, mSex, mAge, mWeight, mLastFed;
 
 
-
         public CardViewHolder(@NonNull final View itemView)
         {
             super(itemView);
 
             view = itemView;
-
 
             mImageView = itemView.findViewById(R.id.image);
             mName = itemView.findViewById(R.id.name);
@@ -60,8 +56,6 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
             mLastFed = itemView.findViewById(R.id.lastFedValue);
 
 
-
-
             // set onclick listener for entire card to detailed prof
             view.setOnClickListener(new View.OnClickListener()
             {
@@ -70,6 +64,20 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
                     // item clicked
                     Log.d(TAG,"clicked on " + currentCard.getName());
                     Log.d(TAG,"clicked on index of " + Integer.toString(mCardList.getIndex(currentCard)));
+
+                    // should now go to detailed prof page
+                    // like this
+                    /*
+                        Intent intent = new Intent(view.getContext(), detaildedProfClassname.class);
+                        intent.putExtra('indexInArrayList', Integer.toString(mCardList.getIndex(currentCard)));
+                        view.getContext().startActivity(intent);
+
+                        something close to above
+                        then on detailedProfClassname java
+                            - getInstance of the arrayList
+                            - get the .putExtra by .getIntent()..(easy to look up)
+                            - using that index you now have access to the objects info
+                     */
                 }
             });
 
@@ -81,17 +89,7 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
                 {
                     Log.d(TAG,"long press on " + currentCard.getName());
 
-                    /*  old way to delete by new activity
-                    //Intent intent = new Intent(view.getContext(),activity_delete.class);
-                    //intent.putExtra("indexToDelete", mCardList.getIndex(currentCard));
-
-                    //Log.d(TAG,"getContext of view: " + view.getContext().toString());
-                    //Log.d(TAG,"index to get passed to deleteview :" + Integer.toString(mCardList.getIndex(currentCard)));
-
-                    //view.getContext().startActivity(intent);
-                    */
-
-
+                    // set up delete alert pop-up
                     buildDeleteAlert(currentCard, view);
 
                     return true;
@@ -102,7 +100,6 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
 
     public card_adapter(card_list cardList)
     {
-        //this.context = context;
         mCardList = cardList;
     }
 
@@ -118,10 +115,8 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
     @Override
     public void onBindViewHolder(@NonNull CardViewHolder cardViewHolder, int i)
     {
-        //changed this
         cardViewHolder.currentCard = mCardList.getArray().get(i);
 
-        //cardViewHolder.mImageView.setImageResource(currItem.getImageResource());
         cardViewHolder.mImageView.setImageBitmap(cardViewHolder.currentCard.getImage());
         cardViewHolder.mName.setText(cardViewHolder.currentCard.getName());
         cardViewHolder.mMorph.setText(cardViewHolder.currentCard.getMorph());
@@ -140,7 +135,8 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
     public static void buildDeleteAlert(final card_item currentCard, final View view)
     {
         final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(view.getContext(), R.style.AlertDialogCustom));//view.getContext());
-        builder.setTitle("Delete " + currentCard.getName() + " ?");
+        builder.setTitle("Delete " + currentCard.getName() + "?");
+
         //alert  Yes button
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener()
         {
@@ -149,6 +145,8 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
             {
                 Toast.makeText(view.getContext(), currentCard.getName() + " was deleted", Toast.LENGTH_LONG).show();
                 mCardList.deleteFromArray(mCardList.getObjectAtIndex(mCardList.getIndex(currentCard)));
+
+                // 'refresh home page' ...want to just recall buildRecyclerView() but don't know how
                 Intent i = new Intent(view.getContext(),home_page.class);
                 view.getContext().startActivity(i);
             }
@@ -165,6 +163,5 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
         });
         AlertDialog diag = builder.create();
         diag.show();
-
     }
 }

@@ -10,10 +10,9 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-public class home_page extends AppCompatActivity {
+public class home_page extends AppCompatActivity
+{
     final String TAG = this.getClass().getName();
-
-    //private static ArrayList<card_item> cardList;
 
     private card_list cardList = card_list.getmInstance();
 
@@ -22,18 +21,13 @@ public class home_page extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
         buildRecyclerView();
     }
-
-    public void deleteCard()
-    {
-
-    }
-
 
     public void buildRecyclerView()
     {
