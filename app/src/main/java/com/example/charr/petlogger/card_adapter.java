@@ -78,6 +78,10 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
                             - get the .putExtra by .getIntent()..(easy to look up)
                             - using that index you now have access to the objects info
                      */
+
+                    Intent intent = new Intent(view.getContext(), testingChangingMorph.class);
+                    intent.putExtra("indexInArrayList",mCardList.getIndex(currentCard));
+                    view.getContext().startActivity(intent);
                 }
             });
 

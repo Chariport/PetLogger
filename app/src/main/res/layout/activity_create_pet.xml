@@ -141,6 +141,7 @@
 
 
             <EditText
+                android:selectAllOnFocus="true"
                 android:id="@+id/edittextWeight"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="275dp"

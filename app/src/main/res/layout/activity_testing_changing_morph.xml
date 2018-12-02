@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".testingChangingMorph"
+    android:background="@drawable/create_pet_background_gradient">
+
+    <EditText
+        android:id="@+id/testingMorphValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="tempMorphText"
+        android:textSize="40sp"
+        android:inputType="textPersonName"
+        android:background="@drawable/createpet_edittextbackground"
+        android:selectAllOnFocus="true"
+        />
+
+    <Button
+        android:id="@+id/backToHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/testingMorphValue"
+        android:layout_marginTop="10dp"
+        android:text="@string/done"
+        android:onClick="backToHome"
+        />
+
+</RelativeLayout>

@@ -57,6 +57,11 @@ public class card_item extends AppCompatActivity {
 
     public Date getLastFed() {return mLastFed;}
 
+    public void setMorph(String m)
+    {
+        this.mMorph = m;
+    }
+
     public String dateObjectToMonthDayYearString(Date dd)
     {
         Calendar tempCalendar = Calendar.getInstance();
