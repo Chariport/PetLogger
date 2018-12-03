@@ -7,6 +7,7 @@ import android.view.View;
 
 public class weight_log_entry extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

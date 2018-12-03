@@ -62,7 +62,8 @@
                 android:text="Name:"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:layout_marginTop="40dp"/>
+                android:layout_marginTop="40dp"
+                android:imeOptions="actionDone"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -71,7 +72,8 @@
                 android:text="Birth Date:"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:layout_marginTop="110dp"/>
+                android:layout_marginTop="110dp"
+                android:imeOptions="actionDone"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -80,7 +82,8 @@
                 android:text="Sex:"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:layout_marginTop="180dp"/>
+                android:layout_marginTop="180dp"
+                android:imeOptions="actionDone"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -89,7 +92,8 @@
                 android:text="Weight(g):"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:layout_marginTop="250dp"/>
+                android:layout_marginTop="250dp"
+                android:imeOptions="actionDone"/>
 
 
             <EditText
@@ -107,7 +111,8 @@
                 android:textSize="30sp"
                 android:textColor="@color/black"
                 android:inputType="textPersonName"
-                android:background="@drawable/createpet_edittextbackground"/>
+                android:background="@drawable/createpet_edittextbackground"
+                android:imeOptions="actionDone"/>
 
 
             <TextView
@@ -122,7 +127,8 @@
                 android:textSize="30sp"
                 android:textColor="@color/black"
                 android:background="@drawable/createpet_edittextbackground"
-                android:focusable="false"/>
+                android:focusable="false"
+                android:imeOptions="actionDone"/>
 
 
             <Spinner

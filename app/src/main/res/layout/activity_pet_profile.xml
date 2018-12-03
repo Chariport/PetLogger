@@ -65,19 +65,19 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/nameEditTextView"
                 android:layout_width="113dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="91dp"
-                android:layout_marginTop="325dp"
+                android:layout_marginStart="203dp"
+                android:layout_marginTop="292dp"
                 android:text="Louis"
                 android:textAlignment="center"
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/textView22"
+                android:id="@+id/ageEditTextView"
                 android:layout_width="181dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -101,7 +101,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView18"
+                android:id="@+id/lastFedEditTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -125,7 +125,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView20"
+                android:id="@+id/lastShedEditTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/textView19"
@@ -140,7 +140,7 @@
                 android:id="@+id/textView23"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/textView24"
+                android:layout_alignTop="@+id/sexEditTextView"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="0dp"
@@ -149,7 +149,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView24"
+                android:id="@+id/sexEditTextView"
                 android:layout_width="144dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -173,7 +173,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView16"
+                android:id="@+id/weightEditTextView"
                 android:layout_width="291dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView15"
@@ -200,7 +200,7 @@
                 android:id="@+id/imageView3"
                 android:layout_width="308dp"
                 android:layout_height="231dp"
-                android:layout_below="@+id/textView18"
+                android:layout_below="@+id/lastFedEditTextView"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="58dp"
