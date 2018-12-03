@@ -44,24 +44,17 @@ public class pet_profile extends AppCompatActivity {
             }
         });
 
-
         nameTextView = (TextView) findViewById(R.id.nameEditTextView);
-        //nameTextView.setEnabled(false);
 
         ageTextView = (TextView) findViewById(R.id.ageEditTextView);
-        //ageTextView.setEnabled(false);
 
         lastFedTextView = (TextView) findViewById(R.id.lastFedEditTextView);
-        //lastFedTextView.setEnabled(false);
 
         weightTextView = (TextView) findViewById(R.id.weightEditTextView);
-        //weightTextView.setEnabled(false);
 
         lastShedTextView = (TextView) findViewById(R.id.lastShedEditTextView);
-        //lastShedTextView.setEnabled(false);
 
         sexTextView = (TextView) findViewById(R.id.sexEditTextView);
-        //sexTextView.setEnabled(false);
 
         Intent cardIntent = getIntent();
         int index = cardIntent.getExtras().getInt("indexInArrayList");
