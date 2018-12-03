@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+//import de.hdodenhof.circleimageview.CircleImageView;
 
 public class pet_profile extends AppCompatActivity {
     private Button backButton;
