@@ -65,8 +65,8 @@ public class pet_profile extends AppCompatActivity {
         weightTextView.setText(Double.toString(currentCard.getCurrentWeight()));
         profilePicture.setImageBitmap(currentCard.getImage());
         ageTextView.setText(Integer.toString(currentCard.getAge(currentCard.getBirthDate())));
-        lastShedTextView.setText(currentCard.getLastFed().toString());
-        lastFedTextView.setText(currentCard.getLastFed().toString());
+        lastShedTextView.setText(currentCard.dateObjectToMonthDayYearString(currentCard.getLastFed()));
+        lastFedTextView.setText(currentCard.dateObjectToMonthDayYearString(currentCard.getLastFed()));
         sexTextView.setText(currentCard.getSex());
 
     }
