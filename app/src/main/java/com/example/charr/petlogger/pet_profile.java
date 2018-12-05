@@ -24,7 +24,7 @@ public class pet_profile extends AppCompatActivity {
     private TextView weightTextView;
     private TextView lastShedTextView;
     private TextView sexTextView;
-    private ImageView profilePicture;
+    private de.hdodenhof.circleimageview.CircleImageView profilePicture;
 
     private card_list cardList = card_list.getmInstance();
 
@@ -33,7 +33,7 @@ public class pet_profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pet_profile);
 
-        profilePicture = (ImageView) findViewById(R.id.profilePicture);
+        profilePicture = (de.hdodenhof.circleimageview.CircleImageView) findViewById(R.id.profilePicture);
         profilePicture.setEnabled(false);
 
         backButton = (Button) findViewById(R.id.button2);
