@@ -22,20 +22,19 @@
         android:background="@drawable/cancelbutton" />
 
 
-
     <TextView
         android:id="@+id/text_Create_Pet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_toEndOf="@id/cancelButton"
-        android:fontFamily="@string/app_name"
+        android:fontFamily="@font/heebo_light"
+        android:paddingLeft="10dp"
         android:text="@string/create_pet"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="42sp"
-        android:paddingLeft="10dp"
         android:textStyle="bold" />
 
 
@@ -59,60 +58,65 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/edittext_birthdate"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/heebo_light"
+                android:imeOptions="actionDone"
                 android:text="Name:"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                android:layout_marginTop="40dp"
-                android:imeOptions="actionDone"/>
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/edittext_birthdate"
+                android:layout_marginTop="110dp"
+                android:fontFamily="@font/heebo_light"
+                android:imeOptions="actionDone"
                 android:text="Birth Date:"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                android:layout_marginTop="110dp"
-                android:imeOptions="actionDone"/>
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/edittext_birthdate"
+                android:layout_marginTop="180dp"
+                android:fontFamily="@font/heebo_light"
+                android:imeOptions="actionDone"
                 android:text="Sex:"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                android:layout_marginTop="180dp"
-                android:imeOptions="actionDone"/>
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/edittext_birthdate"
+                android:layout_marginTop="250dp"
+                android:fontFamily="@font/heebo_light"
+                android:imeOptions="actionDone"
                 android:text="Weight(g):"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                android:layout_marginTop="250dp"
-                android:imeOptions="actionDone"/>
+                android:textSize="20sp" />
 
 
             <EditText
-                android:autofillHints="@string/hint_name"
                 android:id="@+id/edittext_name"
                 android:layout_width="275dp"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_alignEnd="@+id/edittext_birthdate"
                 android:layout_alignStart="@+id/edittext_birthdate"
+                android:layout_alignEnd="@+id/edittext_birthdate"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="65dp"
-                android:paddingHorizontal="40dp"
-                android:hint="@string/hintClick"
-                android:textColorHint="@color/hintcolor"
-                android:textSize="30sp"
-                android:textColor="@color/black"
-                android:inputType="textPersonName"
+                android:autofillHints="@string/hint_name"
                 android:background="@drawable/createpet_edittextbackground"
-                android:imeOptions="actionDone"/>
+                android:fontFamily="@font/heebo_light"
+                android:hint="@string/hintClick"
+                android:imeOptions="actionDone"
+                android:inputType="textPersonName"
+                android:paddingHorizontal="40dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/hintcolor"
+                android:textSize="30sp" />
 
 
             <TextView
@@ -121,14 +125,15 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="135dp"
-                android:paddingHorizontal="40dp"
-                android:hint="@string/hintClick"
-                android:textColorHint="@color/hintcolor"
-                android:textSize="30sp"
-                android:textColor="@color/black"
                 android:background="@drawable/createpet_edittextbackground"
                 android:focusable="false"
-                android:imeOptions="actionDone"/>
+                android:fontFamily="@font/heebo_light"
+                android:hint="@string/hintClick"
+                android:imeOptions="actionDone"
+                android:paddingHorizontal="40dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/hintcolor"
+                android:textSize="30sp" />
 
 
             <Spinner
@@ -147,21 +152,22 @@
 
 
             <EditText
-                android:selectAllOnFocus="true"
                 android:id="@+id/edittextWeight"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="275dp"
-                android:paddingHorizontal="40dp"
-                android:layout_alignEnd="@+id/edittext_birthdate"
-                android:layout_alignStart="@+id/edittext_birthdate"
                 android:layout_width="275dp"
                 android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/edittext_birthdate"
+                android:layout_alignEnd="@+id/edittext_birthdate"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="275dp"
+                android:background="@drawable/createpet_edittextbackground"
+                android:fontFamily="@font/heebo_light"
                 android:hint="@string/hintClick"
-                android:textColorHint="@color/hintcolor"
-                android:textSize="30sp"
-                android:textColor="@color/black"
                 android:inputType="numberDecimal"
-                android:background="@drawable/createpet_edittextbackground" />
+                android:paddingHorizontal="40dp"
+                android:selectAllOnFocus="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/hintcolor"
+                android:textSize="30sp" />
 
             <Button
                 android:id="@+id/finishButton"
