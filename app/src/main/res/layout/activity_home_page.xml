@@ -56,8 +56,5 @@
         android:onClick="fromHomePageToCreatePet"
         android:tint="@android:color/transparent"
         app:backgroundTint="@color/colorPrimaryDark"
-        app:rippleColor="@android:color/transparent"
-        app:srcCompat="@drawable/addButton" />
-
-
+        app:rippleColor="@android:color/transparent" />
 </RelativeLayout>
