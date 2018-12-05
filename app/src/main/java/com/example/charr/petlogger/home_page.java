@@ -25,8 +25,12 @@ public class home_page extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-
+        if(savedInstanceState == null || !savedInstanceState.containsKey("cardList")) {
         buildRecyclerView();
+        }
+        else {
+            cardList= (card_list) savedInstanceState.getParcelableArrayList("cardList");
+        }
     }
 
     public void buildRecyclerView()
@@ -49,5 +53,13 @@ public class home_page extends AppCompatActivity
         Log.d(TAG,"get context on homepage: " + home_page.this);
         startActivity(intent);
     }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState){
+        outState.putParcelableArrayList("cardList",cardList);
+        super.onSaveInstanceState(outState);
+    }
+
 
 }
