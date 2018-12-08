@@ -1,26 +1,18 @@
 package com.example.charr.petlogger;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Calendar;
 
 
 public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHolder>
@@ -48,7 +40,7 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
             view = itemView;
 
             mImageView = itemView.findViewById(R.id.image);
-            mName = itemView.findViewById(R.id.name);
+            mName = itemView.findViewById(R.id.nameTextView);
             mMorph = itemView.findViewById(R.id.morphValue);
             mSex =  itemView.findViewById(R.id.sex);
             mAge = itemView.findViewById(R.id.petsAgeValue);

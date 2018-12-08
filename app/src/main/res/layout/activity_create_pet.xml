@@ -121,14 +121,14 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="135dp"
-                android:paddingHorizontal="40dp"
-                android:hint="@string/hintClick"
-                android:textColorHint="@color/hintcolor"
-                android:textSize="30sp"
-                android:textColor="@color/black"
                 android:background="@drawable/createpet_edittextbackground"
                 android:focusable="false"
-                android:imeOptions="actionDone"/>
+                android:hint="@string/hintClick"
+                android:imeOptions="actionDone"
+                android:paddingHorizontal="40dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/hintcolor"
+                android:textSize="30sp" />
 
 
             <Spinner

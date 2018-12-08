@@ -39,7 +39,7 @@ public class card_item extends AppCompatActivity {
 
         //set others to default
         mLastFed = new Date(); // day of creation
-        mMorph = "Default from constructor"; // should be able to change on detailed profile
+        mMorph = "----"; // should be able to change on detailed profile
     }
 
     public Bitmap getImage() { return mImage; }
@@ -61,6 +61,20 @@ public class card_item extends AppCompatActivity {
     {
         this.mMorph = m;
     }
+
+    public void setmMorph(String mMorph) { this.mMorph = mMorph;}
+
+    public void setmImage(Bitmap mImage) {this.mImage = mImage;}
+
+    public void setmName(String mName) {this.mName = mName;}
+
+    public void setmBdate(Date mBdate) {this.mBdate = mBdate;}
+
+    public void setmLastFed(Date mLastFed) {this.mLastFed = mLastFed;}
+
+    public void setmSex(String mSex) {this.mSex = mSex;}
+
+    public void setmWeight(double mWeight) {this.mWeight = mWeight;}
 
     public String dateObjectToMonthDayYearString(Date dd)
     {
