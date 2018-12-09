@@ -60,6 +60,7 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
     ArrayAdapter<CharSequence> sexadapter;
     int buttonClicked = 1; // If the edit button has been clicked once (begin editing) or twice (finished editing)
     private card_list cardList = card_list.getmInstance();
+    private card_item currentCard;
 
 
     @Override
@@ -79,7 +80,7 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
         initializeEditTextViews();
 
         // Get specific card index
-        card_item currentCard = getCurrentCard();
+        currentCard = getCurrentCard();
 
         // Display pet information in EditText fields
         displayPetInfo(currentCard);
@@ -107,6 +108,10 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
     }
 
     public void initializeEditTextViews() {
+
+//        petBdate = currentCard.getBirthDate();
+//        lastFedDate = currentCard.getLastFed();
+//        lastShedDate = currentCard.getmLastShed();
 
         editButton = (Button) findViewById(R.id.editButton);
         editButton.setOnClickListener(this);
@@ -335,8 +340,7 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
                         nameEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         nameEditTextView.setEnabled(false);
 
-                        currentCard.setmBdate(petBdate);
-                        //currentCard.mBdate = petBdate;
+                        //currentCard.setmBdate(petBdate);
                         ageEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         ageEditTextView.setEnabled(false);
 
@@ -365,7 +369,7 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
                         morphEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         morphEditTextView.setEnabled(false);
 
-                        // get image
+                         //get image
                         Bitmap petProfileImage;
                         String encodedImage;
                         if (gotImage) {
@@ -380,7 +384,7 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
                             // set petProfileImage to a default image....
                             petProfileImage = BitmapFactory.decodeResource(getResources(), R.drawable.defaultpetimage);
                         }
-//
+
 //
 //                        // data validation
 //                        if (validateData()) {

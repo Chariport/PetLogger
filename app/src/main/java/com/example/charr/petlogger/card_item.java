@@ -24,10 +24,10 @@ public class card_item extends AppCompatActivity {
     private Bitmap mImage;
     private String mName;
     private Date mBdate;
-    public Date mLastFed;
-    public Date mLastShed;
+    private Date mLastFed;
+    private Date mLastShed;
     private String mSex;
-    public double mWeight;
+    private double mWeight;
 
 
     public card_item(Bitmap image, String name, Date date, String sex, double weight)
