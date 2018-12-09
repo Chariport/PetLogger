@@ -1,9 +1,14 @@
 package com.example.charr.petlogger;
 
 import android.app.DatePickerDialog;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -16,7 +21,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -29,9 +36,10 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
     private Button backButton;
     private Button weightLogButton;
     private Button editButton;
+    private Button editPhotoButton;
     private EditText nameEditTextView;
     private EditText ageEditTextView;
-    private DatePickerDialog.OnDateSetListener bdayDateSetListener;
+    private DatePickerDialog.OnDateSetListener bdayDateSetListener, lastShedDateSetListener, lastFedDateSetListener;
     private EditText lastFedEditTextView;
     private EditText weightEditTextView;
     private NumberPicker leftOfDecimal, rightOfDecimal;
@@ -42,9 +50,12 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
     private static final int RESULT_LOAD_IMAGE = 1;
     private boolean gotImage = false; //used to see if user selected an image;
     private String tempDate = "";
+    private String tempDate2 = "";
+    private String tempDate3 = "";
+
 
     public String petSex, petName;
-    public java.util.Date petBdate;
+    public java.util.Date petBdate, lastFedDate, lastShedDate;
     public double petWeight;
 
     ArrayAdapter<CharSequence> sexadapter;
@@ -56,6 +67,14 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pet_profile);
+
+        backButton = (Button) findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openMainPage();
+            }
+        });
 
         // Initializes text boxes and sets disables them
         initializeEditTextViews();
@@ -90,11 +109,12 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
 
     public void initializeEditTextViews() {
 
-        backButton = (Button) findViewById(R.id.backButton);
-        backButton.setOnClickListener(this);
-
         editButton = (Button) findViewById(R.id.editButton);
         editButton.setOnClickListener(this);
+
+        editPhotoButton = (Button) findViewById(R.id.editPhotoButton);
+        editPhotoButton.setOnClickListener(this);
+        editPhotoButton.setEnabled(false);
 
         nameEditTextView = (EditText) findViewById(R.id.nameEditTextView);
         nameEditTextView.setEnabled(false);
@@ -122,13 +142,52 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
         };
 
         lastFedEditTextView = (EditText) findViewById(R.id.lastFedEditTextView);
+        lastFedEditTextView.setOnClickListener(this);
         lastFedEditTextView.setEnabled(false);
+
+        //set up DateSetListener
+        lastFedDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month += 1; // starts at 0 for months...
+                Log.d(TAG, "onDateSet: mm/dd/yyyy: " + month + "/" + dayOfMonth + "/" + year);
+
+                tempDate2 = month + "/" + dayOfMonth + "/" + year;
+                Calendar tempC = Calendar.getInstance();
+                tempC.set(year, month - 1, dayOfMonth);
+                lastFedDate = tempC.getTime();
+
+                if (tempDate2.length() > 0) // Error set needs to be in here
+                    lastFedEditTextView.setError(null);
+                lastFedEditTextView.setText(tempDate2);
+            }
+        };
+
+        lastShedEditTextView = (EditText) findViewById(R.id.lastShedEditTextView);
+        lastShedEditTextView.setOnClickListener(this);
+        lastShedEditTextView.setEnabled(false);
+
+        //set up DateSetListener
+        lastShedDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month += 1; // starts at 0 for months...
+                Log.d(TAG, "onDateSet: mm/dd/yyyy: " + month + "/" + dayOfMonth + "/" + year);
+
+                tempDate3 = month + "/" + dayOfMonth + "/" + year;
+                Calendar tempC = Calendar.getInstance();
+                tempC.set(year, month - 1, dayOfMonth);
+                lastShedDate = tempC.getTime();
+
+                if (tempDate3.length() > 0) // Error set needs to be in here
+                    lastShedEditTextView.setError(null);
+                lastShedEditTextView.setText(tempDate3);
+            }
+        };
+
 
         weightEditTextView = (EditText) findViewById(R.id.weightEditTextView);
         weightEditTextView.setEnabled(false);
-
-        lastShedEditTextView = (EditText) findViewById(R.id.lastShedEditTextView);
-        lastShedEditTextView.setEnabled(false);
 
         sexSpinner = (Spinner) findViewById(R.id.sexSpinner);
         sexadapter = ArrayAdapter.createFromResource(
@@ -146,7 +205,7 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
 
     public void displayPetInfo(card_item currentCard) {
         nameEditTextView.setText(currentCard.getName());
-        weightEditTextView.setText(Double.toString(currentCard.getCurrentWeight()) + " g");
+        weightEditTextView.setText(Double.toString(currentCard.getCurrentWeight()));
         profilePicture.setImageBitmap(currentCard.getImage());
         ageEditTextView.setText(currentCard.dateObjectToMonthDayYearString(currentCard.getBirthDate()));
         lastShedEditTextView.setText(currentCard.dateObjectToMonthDayYearString(currentCard.getLastFed()));
@@ -179,7 +238,37 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable((Color.TRANSPARENT)));
                     dialog.show();
                     break;
-                case R.id.pet_imageView:
+                case R.id.lastFedEditTextView:
+                    Calendar cal2 = Calendar.getInstance();
+                    int year2 = cal2.get(Calendar.YEAR);
+                    int month2 = cal2.get(Calendar.MONTH);
+                    int day2 = cal2.get(Calendar.DAY_OF_MONTH);
+
+                    DatePickerDialog dialog2 = new DatePickerDialog(
+                            this,
+                            android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                            lastFedDateSetListener,
+                            year2, month2, day2);
+
+                    dialog2.getWindow().setBackgroundDrawable(new ColorDrawable((Color.TRANSPARENT)));
+                    dialog2.show();
+                    break;
+                case R.id.lastShedEditTextView:
+                    Calendar cal3 = Calendar.getInstance();
+                    int year3 = cal3.get(Calendar.YEAR);
+                    int month3 = cal3.get(Calendar.MONTH);
+                    int day3 = cal3.get(Calendar.DAY_OF_MONTH);
+
+                    DatePickerDialog dialog3 = new DatePickerDialog(
+                            this,
+                            android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                            lastShedDateSetListener,
+                            year3, month3, day3);
+
+                    dialog3.getWindow().setBackgroundDrawable(new ColorDrawable((Color.TRANSPARENT)));
+                    dialog3.show();
+                    break;
+                case R.id.editPhotoButton:
                     Log.d(TAG, "clicked on image view");
                     Intent galleryIntent = new Intent(
                             Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -200,25 +289,18 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
                         ageEditTextView.setFocusable(false);
 
                         lastFedEditTextView.setBackgroundColor(Color.parseColor("#f7f6f2"));
-                        lastFedEditTextView.setCursorVisible(true);
-                        lastFedEditTextView.setFocusableInTouchMode(true);
-                        lastFedEditTextView.setInputType(InputType.TYPE_CLASS_TEXT);
-                        lastFedEditTextView.requestFocus(); //to trigger the soft input
                         lastFedEditTextView.setEnabled(true);
+                        lastFedEditTextView.setFocusable(false);
+
+                        lastShedEditTextView.setBackgroundColor(Color.parseColor("#f7f6f2"));
+                        lastShedEditTextView.setEnabled(true);
+                        lastShedEditTextView.setFocusable(false);
 
                         weightEditTextView.setBackgroundColor(Color.parseColor("#f7f6f2"));
                         weightEditTextView.setCursorVisible(true);
                         weightEditTextView.setFocusableInTouchMode(true);
-                        weightEditTextView.setInputType(InputType.TYPE_CLASS_TEXT);
                         weightEditTextView.requestFocus(); //to trigger the soft input
                         weightEditTextView.setEnabled(true);
-
-                        lastShedEditTextView.setBackgroundColor(Color.parseColor("#f7f6f2"));
-                        lastShedEditTextView.setCursorVisible(true);
-                        lastShedEditTextView.setFocusableInTouchMode(true);
-                        lastShedEditTextView.setInputType(InputType.TYPE_CLASS_TEXT);
-                        lastShedEditTextView.requestFocus(); //to trigger the soft input
-                        lastShedEditTextView.setEnabled(true);
 
                         sexSpinner.setBackgroundColor(Color.parseColor("#f7f6f2"));
                         sexSpinner.setFocusableInTouchMode(true);
@@ -232,7 +314,10 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
                         morphEditTextView.requestFocus(); //to trigger the soft input
                         morphEditTextView.setEnabled(true);
 
-                        //backButton.setEnabled(false);
+                        editPhotoButton.setEnabled(true);
+
+                        backButton.setEnabled(false);
+
 
                         buttonClicked = 0;
                     }
@@ -251,28 +336,20 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
                         nameEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         nameEditTextView.setEnabled(false);
 
-                        currentCard.setmBdate(petBdate);
-                        ageEditTextView.setText(ageEditTextView.getText());
-                        //ageEditTextView.setText(Integer.toString(currentCard.getAge(currentCard.getBirthDate())));
+                        //currentCard.setmBdate(petBdate);
                         ageEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         ageEditTextView.setEnabled(false);
 
-                        stringInput = lastFedEditTextView.getText().toString();
-                        //currentCard.setmName(stringInput);
-                        lastFedEditTextView.setText(stringInput);
+                        //currentCard.setmLastFed(lastFedDate);
                         lastFedEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         lastFedEditTextView.setEnabled(false);
 
-//                        stringInput = weightEditTextView.getText().toString();
-//                        doubleInput = Double.parseDouble(stringInput);
-//                        currentCard.setmWeight(doubleInput);
-//                        weightEditTextView.setText(Double.toString(doubleInput) + " g");
-//                        weightEditTextView.setBackgroundColor(Color.TRANSPARENT);
-//                        weightEditTextView.setEnabled(false);
+                        //doubleInput = Double.parseDouble(weightEditTextView.getText().toString());
+                        //currentCard.setmWeight(doubleInput);
+                        weightEditTextView.setBackgroundColor(Color.TRANSPARENT);
+                        weightEditTextView.setEnabled(false);
 
-                        stringInput = lastShedEditTextView.getText().toString();
-                        //currentCard.setmName(stringInput);
-                        lastShedEditTextView.setText(stringInput);
+                        //currentCard.setmLastShed(lastFedDate);
                         lastShedEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         lastShedEditTextView.setEnabled(false);
 
@@ -286,11 +363,6 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
                         morphEditTextView.setText(stringInput);
                         morphEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         morphEditTextView.setEnabled(false);
-
-
-
-
-
 
 //                        // get image
 //                        Bitmap petProfileImage;
@@ -307,35 +379,36 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
 //                            // set petProfileImage to a default image....
 //                            petProfileImage = BitmapFactory.decodeResource(getResources(), R.drawable.defaultpetimage);
 //                        }
-
-                        //Log.d(TAG,"petSex: " + petSex + " petName: " + petName + " petBday: " + petBdate.toString() + "petWeight: " + petWeight);
-                        //Log.d(TAG,"gotImage: " + gotImage);
-
-
-//                        if (petSex.equals("Male ♂")) {
-//                            petSex = "Male ♂";
-//                        } else if (petSex.equals("Female ♀")) {
-//                            petSex = "Female ♀";
-//                        }
+//
 //
 //                        // data validation
 //                        if (validateData()) {
 //                            //toast up saying there are entry errors
 //                            Toast.makeText(this, "Profile NOT updated. See errors above.", Toast.LENGTH_LONG).show();
 //                        }
+
+                        editPhotoButton.setEnabled(false);
+
 //
-//                        //backButton.setEnabled(true);
+                        backButton.setEnabled(true);
 
 
                         buttonClicked = 1;
                     }
                     break;
-                case R.id.backButton:
-                    Intent intent = new Intent(pet_profile.this, home_page.class);
-                    startActivity(intent);
                 }
             }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && data != null)
+        {
+            gotImage = true;
+            Uri selectedImage = data.getData(); //address of image
+            profilePicture.setImageURI(selectedImage);
+        }
+    }
 
     public boolean validateData()
     {

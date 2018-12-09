@@ -147,21 +147,21 @@
 
 
             <EditText
-                android:selectAllOnFocus="true"
                 android:id="@+id/edittextWeight"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="275dp"
-                android:paddingHorizontal="40dp"
-                android:layout_alignEnd="@+id/edittext_birthdate"
-                android:layout_alignStart="@+id/edittext_birthdate"
                 android:layout_width="275dp"
                 android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/edittext_birthdate"
+                android:layout_alignEnd="@+id/edittext_birthdate"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="275dp"
+                android:background="@drawable/createpet_edittextbackground"
                 android:hint="@string/hintClick"
-                android:textColorHint="@color/hintcolor"
-                android:textSize="30sp"
-                android:textColor="@color/black"
                 android:inputType="numberDecimal"
-                android:background="@drawable/createpet_edittextbackground" />
+                android:paddingHorizontal="40dp"
+                android:selectAllOnFocus="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/hintcolor"
+                android:textSize="30sp" />
 
             <Button
                 android:id="@+id/finishButton"

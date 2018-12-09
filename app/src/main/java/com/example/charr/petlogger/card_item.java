@@ -25,6 +25,7 @@ public class card_item extends AppCompatActivity {
     private String mName;
     private Date mBdate;
     private Date mLastFed;
+    private Date mLastShed;
     private String mSex;
     private double mWeight;
 
@@ -39,6 +40,7 @@ public class card_item extends AppCompatActivity {
 
         //set others to default
         mLastFed = new Date(); // day of creation
+        mLastShed = new Date();
         mMorph = "----"; // should be able to change on detailed profile
     }
 
@@ -56,6 +58,10 @@ public class card_item extends AppCompatActivity {
     public Date getBirthDate(){return mBdate;}
 
     public Date getLastFed() {return mLastFed;}
+
+    public Date getmLastShed() { return mLastShed;}
+
+    public void setmLastShed(Date mLastShed) {this.mLastShed = mLastShed;}
 
     public void setMorph(String m)
     {
