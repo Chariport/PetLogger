@@ -2,22 +2,30 @@ package com.example.charr.petlogger;
 
 import android.app.DatePickerDialog;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.content.Intent;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -32,82 +40,134 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
     private Button editButton;
     private EditText nameEditTextView;
     private EditText ageEditTextView;
+    private DatePickerDialog.OnDateSetListener bdayDateSetListener;
     private EditText lastFedEditTextView;
     private EditText weightEditTextView;
+    private NumberPicker leftOfDecimal, rightOfDecimal;
     private EditText lastShedEditTextView;
-    private EditText sexEditTextView;
+    private Spinner sexSpinner;
     private EditText morphEditTextView;
     private de.hdodenhof.circleimageview.CircleImageView profilePicture;
+    private static final int RESULT_LOAD_IMAGE = 1;
+    private boolean gotImage = false; //used to see if user selected an image;
+    private String tempDate = "";
 
-    int buttonClicked = 1; // If the edit button has been clicked once (begin editing) or twice (finished editing)
-
-    // variables to edit age of pet
-    private DatePickerDialog.OnDateSetListener bdayDateSetListener;
-    public String tempDate = "";
+    public String petSex, petName;
     public java.util.Date petBdate;
+    public double petWeight;
 
-
+    ArrayAdapter<CharSequence> sexadapter;
+    int buttonClicked = 1; // If the edit button has been clicked once (begin editing) or twice (finished editing)
     private card_list cardList = card_list.getmInstance();
 
+    //    private Button backButton;
+//    private Button weightLogButton;
+//    private Button editButton;
+//    private EditText nameEditTextView;
+//    private EditText ageEditTextView;
+//    private EditText lastFedEditTextView;
+//    private EditText weightEditTextView;
+//    private EditText lastShedEditTextView;
+//    private EditText sexEditTextView;
+//    private EditText morphEditTextView;
+//    private de.hdodenhof.circleimageview.CircleImageView profilePicture;
+//
+//    int buttonClicked = 1; // If the edit button has been clicked once (begin editing) or twice (finished editing)
+//
+//    // variables to edit age of pet
+//    private DatePickerDialog.OnDateSetListener bdayDateSetListener;
+//    public String tempDate = "";
+//    public java.util.Date petBdate;
+//
+//
+//    private card_list cardList = card_list.getmInstance();
+//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pet_profile);
 
-        profilePicture = (de.hdodenhof.circleimageview.CircleImageView) findViewById(R.id.profilePicture);
-        profilePicture.setEnabled(false);
-
-        backButton = (Button) findViewById(R.id.button2);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openMainPage();
-            }
-        });
-
-
         // Initializes text boxes and sets disables them
         initializeEditTextViews();
-        ageEditTextView.setOnClickListener(this);
-
 
         // Get specific card index
         card_item currentCard = getCurrentCard();
 
         // Display pet information in EditText fields
         displayPetInfo(currentCard);
+//
+//        profilePicture = (de.hdodenhof.circleimageview.CircleImageView) findViewById(R.id.profilePicture);
+//        profilePicture.setEnabled(false);
+//
+//        backButton = (Button) findViewById(R.id.button2);
+//        backButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                openMainPage();
+//            }
+//        });
+//
+//
+//        // Initializes text boxes and sets disables them
+//        initializeEditTextViews();
+//        ageEditTextView.setOnClickListener(this);
+//
+//
+//        // Get specific card index
+//        card_item currentCard = getCurrentCard();
+//
+//        // Display pet information in EditText fields
+//        displayPetInfo(currentCard);
+
+
     }
 
-    public void openMainPage(){
+    public void openMainPage() {
         Intent intent = new Intent(this, home_page.class);
         startActivity(intent);
     }
 
-    public void openWeightLog(){
+    public void openWeightLog() {
         Intent intent = new Intent(this, weight_log.class);
         startActivity(intent);
     }
 
-    public void viewWeightLog(View view)
-    {
+    public void viewWeightLog(View view) {
         Intent intent = new Intent(pet_profile.this, weight_log.class);
         startActivity(intent);
     }
 
-    public card_item getCurrentCard()
-    {
+    public card_item getCurrentCard() {
         Intent cardIntent = getIntent();
         int index = cardIntent.getExtras().getInt("indexInArrayList");
         return cardList.getArray().get(index);
     }
 
-    public void initializeEditTextViews()
-    {
+    public void initializeEditTextViews() {
         nameEditTextView = (EditText) findViewById(R.id.nameEditTextView);
         nameEditTextView.setEnabled(false);
 
         ageEditTextView = (EditText) findViewById(R.id.ageEditTextView);
+        ageEditTextView.setOnClickListener(this);
         ageEditTextView.setEnabled(false);
+
+        //set up DateSetListener
+        bdayDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month += 1; // starts at 0 for months...
+                Log.d(TAG, "onDateSet: mm/dd/yyyy: " + month + "/" + dayOfMonth + "/" + year);
+
+                tempDate = month + "/" + dayOfMonth + "/" + year;
+                Calendar tempC = Calendar.getInstance();
+                tempC.set(year, month - 1, dayOfMonth);
+                petBdate = tempC.getTime();
+
+                if (tempDate.length() > 0) // Error set needs to be in here
+                    ageEditTextView.setError(null);
+                ageEditTextView.setText(tempDate);
+            }
+        };
 
         lastFedEditTextView = (EditText) findViewById(R.id.lastFedEditTextView);
         lastFedEditTextView.setEnabled(false);
@@ -118,23 +178,57 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
         lastShedEditTextView = (EditText) findViewById(R.id.lastShedEditTextView);
         lastShedEditTextView.setEnabled(false);
 
-        sexEditTextView = (EditText) findViewById(R.id.sexEditTextView);
-        sexEditTextView.setEnabled(false);
+        sexSpinner = (Spinner) findViewById(R.id.sexSpinner);
+        sexadapter = ArrayAdapter.createFromResource(
+                this, R.array.create_pet_sex, R.layout.spinner_layout);
+        sexadapter.setDropDownViewResource(R.layout.spinner_layout);
+        sexSpinner.setAdapter(sexadapter);
+        sexSpinner.setEnabled(false);
 
         morphEditTextView = (EditText) findViewById(R.id.morphEditTextView);
         morphEditTextView.setEnabled(false);
+
+        profilePicture = (de.hdodenhof.circleimageview.CircleImageView) findViewById(R.id.profilePicture);
+        profilePicture.setOnClickListener(this);
+
+
+
+
+//        nameEditTextView = (EditText) findViewById(R.id.nameEditTextView);
+//        nameEditTextView.setEnabled(false);
+//
+//        ageEditTextView = (EditText) findViewById(R.id.ageEditTextView);
+//        ageEditTextView.setEnabled(false);
+//
+//        lastFedEditTextView = (EditText) findViewById(R.id.lastFedEditTextView);
+//        lastFedEditTextView.setEnabled(false);
+//
+//        weightEditTextView = (EditText) findViewById(R.id.weightEditTextView);
+//        weightEditTextView.setEnabled(false);
+//
+//        lastShedEditTextView = (EditText) findViewById(R.id.lastShedEditTextView);
+//        lastShedEditTextView.setEnabled(false);
+//
+//        sexEditTextView = (EditText) findViewById(R.id.sexEditTextView);
+//        sexEditTextView.setEnabled(false);
+//
+//        morphEditTextView = (EditText) findViewById(R.id.morphEditTextView);
+//        morphEditTextView.setEnabled(false);
     }
 
-    public void displayPetInfo(card_item currentCard)
-    {
+    public void displayPetInfo(card_item currentCard) {
         nameEditTextView.setText(currentCard.getName());
         weightEditTextView.setText(Double.toString(currentCard.getCurrentWeight()));
         profilePicture.setImageBitmap(currentCard.getImage());
         ageEditTextView.setText(Integer.toString(currentCard.getAge(currentCard.getBirthDate())));
         lastShedEditTextView.setText(currentCard.dateObjectToMonthDayYearString(currentCard.getLastFed()));
         lastFedEditTextView.setText(currentCard.dateObjectToMonthDayYearString(currentCard.getLastFed()));
-        sexEditTextView.setText(currentCard.getSex());
         morphEditTextView.setText(currentCard.getMorph());
+
+
+        int spinnerPosition = sexadapter.getPosition(currentCard.getSex());
+        sexSpinner.setSelection(spinnerPosition);
+
     }
 
     // When the edit button is clicked
@@ -177,12 +271,11 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
             lastShedEditTextView.requestFocus(); //to trigger the soft input
             lastShedEditTextView.setEnabled(true);
 
-            sexEditTextView.setBackgroundColor(Color.parseColor("#f7f6f2"));
-            sexEditTextView.setCursorVisible(true);
-            sexEditTextView.setFocusableInTouchMode(true);
-            sexEditTextView.setInputType(InputType.TYPE_CLASS_TEXT);
-            sexEditTextView.requestFocus(); //to trigger the soft input
-            sexEditTextView.setEnabled(true);
+            sexSpinner.setBackgroundColor(Color.parseColor("#f7f6f2"));
+            sexSpinner.setFocusableInTouchMode(true);
+            //sexEditTextView.setInputType(InputType.TYPE_CLASS_TEXT);
+            sexSpinner.requestFocus(); //to trigger the soft input
+            sexSpinner.setEnabled(true);
 
             morphEditTextView.setBackgroundColor(Color.parseColor("#f7f6f2"));
             morphEditTextView.setCursorVisible(true);
@@ -192,26 +285,6 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
             morphEditTextView.setEnabled(true);
 
             backButton.setEnabled(false);
-
-            bdayDateSetListener = new DatePickerDialog.OnDateSetListener()
-            {
-                @Override
-                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth)
-                {
-                    month += 1; // starts at 0 for months...
-                    Log.d(TAG, "onDateSet: mm/dd/yyyy: " + month + "/" + dayOfMonth + "/" + year);
-
-                    tempDate =  month + "/" + dayOfMonth + "/" + year;
-                    Calendar tempC = Calendar.getInstance();
-                    tempC.set(year, month - 1, dayOfMonth);
-                    petBdate = tempC.getTime();
-
-                    if(tempDate.length() > 0) // Error set needs to be in here
-                        ageEditTextView.setError(null);
-                    ageEditTextView.setText(tempDate);
-                }
-            };
-
 
             buttonClicked = 0;
         }
@@ -254,17 +327,50 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
             lastShedEditTextView.setBackgroundColor(Color.TRANSPARENT);
             lastShedEditTextView.setEnabled(false);
 
-            stringInput = sexEditTextView.getText().toString();
+            stringInput = sexSpinner.getSelectedItem().toString().trim();
             currentCard.setmSex(stringInput);
-            sexEditTextView.setText(stringInput);
-            sexEditTextView.setBackgroundColor(Color.TRANSPARENT);
-            sexEditTextView.setEnabled(false);
+            sexSpinner.setBackgroundColor(Color.TRANSPARENT);
+            sexSpinner.setEnabled(false);
 
             stringInput = morphEditTextView.getText().toString();
             currentCard.setmMorph(stringInput);
             morphEditTextView.setText(stringInput);
             morphEditTextView.setBackgroundColor(Color.TRANSPARENT);
             morphEditTextView.setEnabled(false);
+
+
+            // get image
+            Bitmap petProfileImage;
+            String encodedImage;
+            if(gotImage)
+            {
+                // Get Bitmap of image
+                petProfileImage = ((BitmapDrawable)profilePicture.getDrawable()).getBitmap();
+                // compress image..not sure if this is necessary
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                petProfileImage.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                encodedImage = android.util.Base64.encodeToString(byteArrayOutputStream.toByteArray(),android.util.Base64.DEFAULT);
+            }
+            else
+            {
+                // set petProfileImage to a default image
+                // set petProfileImage to a default image....
+                petProfileImage = BitmapFactory.decodeResource(getResources(),R.drawable.defaultpetimage);
+            }
+
+            //Log.d(TAG,"petSex: " + petSex + " petName: " + petName + " petBday: " + petBdate.toString() + "petWeight: " + petWeight);
+            //Log.d(TAG,"gotImage: " + gotImage);
+
+
+            if(petSex.equals("Male ♂")) {petSex = "♂";}
+            else if (petSex.equals("Female ♀")) {petSex = "♀";}
+
+            // data validation
+            if(validateData())
+            {
+                //toast up saying there are entry errors
+                Toast.makeText(this, "Profile NOT updated. See errors above.", Toast.LENGTH_LONG).show();
+            }
 
             backButton.setEnabled(true);
 
@@ -277,22 +383,65 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
     // Insert switch statement for each text field
     @Override
     public void onClick(View v) {
+        if (!editButton.isEnabled()) {
+            switch (v.getId()) {
+                case R.id.ageEditTextView:
+                    Calendar cal = Calendar.getInstance();
+                    int year = cal.get(Calendar.YEAR);
+                    int month = cal.get(Calendar.MONTH);
+                    int day = cal.get(Calendar.DAY_OF_MONTH);
 
-        if (!backButton.isEnabled())
-        {}
+                    DatePickerDialog dialog = new DatePickerDialog(
+                            this,
+                            android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                            bdayDateSetListener,
+                            year, month, day);
 
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable((Color.TRANSPARENT)));
+                    dialog.show();
+                    break;
+                case R.id.pet_imageView:
+                    Log.d(TAG, "clicked on image view");
+                    Intent galleryIntent = new Intent(
+                            Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
+                    break;
+            }
+        }
+    }
 
-        DatePickerDialog dialog = new DatePickerDialog(
-                this,
-                android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                bdayDateSetListener,
-                year, month, day);
+    public boolean validateData()
+    {
+        boolean foundError = false;
+        if(petName.isEmpty() || petName.length() > 16)
+        {
+            nameEditTextView.setError("Name cannot be empty or exceed 16 characters.");
+            foundError = true;
+        }
 
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable((Color.TRANSPARENT)));
-        dialog.show();
+        if(tempDate.equals(""))
+        {
+            ageEditTextView.setError("Must enter a birth date.");
+            foundError = true;
+        }
+        else
+            ageEditTextView.setError(null);
+
+        int integerPlaces = Double.toString(petWeight).indexOf(".");
+        int decimalPlaces = Double.toString(petWeight).length() - integerPlaces - 1;
+        // if integerPlaces == -1 then there is no decimal in the number...
+        Log.d(TAG,"NUMBER OF INTEGER PLACES:: " + integerPlaces + "  number of decimal places:; " + decimalPlaces );
+
+        if(petWeight == 0.0 || (decimalPlaces > 3  && integerPlaces != -1))
+        {
+            weightEditTextView.setError("Weight cannot be empty and no more than 3 decimal places (ex: 00.123)");
+            foundError = true;
+        }
+        else
+            weightEditTextView.setError(null);
+
+        return foundError;
     }
 }
+
+

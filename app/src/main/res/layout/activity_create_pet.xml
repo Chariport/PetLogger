@@ -135,15 +135,15 @@
                 android:id="@+id/spinnerSex"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_alignEnd="@+id/edittext_birthdate"
                 android:layout_alignStart="@+id/edittext_birthdate"
+                android:layout_alignEnd="@+id/edittext_birthdate"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="205dp"
+                android:background="@drawable/createpet_edittextbackground"
                 android:entries="@array/create_pet_sex"
                 android:paddingHorizontal="40dp"
-                android:spinnerMode="dropdown"
                 android:popupBackground="@color/white"
-                android:background="@drawable/createpet_edittextbackground"/>
+                android:spinnerMode="dropdown" />
 
 
             <EditText
