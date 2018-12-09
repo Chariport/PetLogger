@@ -118,7 +118,7 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
         cardViewHolder.mMorph.setText(cardViewHolder.currentCard.getMorph());
         cardViewHolder.mSex.setText(cardViewHolder.currentCard.getSex());
         cardViewHolder.mAge.setText(Integer.toString(cardViewHolder.currentCard.getAge(cardViewHolder.currentCard.getBirthDate())));
-        cardViewHolder.mWeight.setText(Double.toString(cardViewHolder.currentCard.getCurrentWeight()) + " g");
+        cardViewHolder.mWeight.setText(Double.toString(cardViewHolder.currentCard.getWeight()) + " g");
         cardViewHolder.mLastFed.setText(cardViewHolder.currentCard.dateObjectToMonthDayYearString(cardViewHolder.currentCard.getLastFed()));
     }
 

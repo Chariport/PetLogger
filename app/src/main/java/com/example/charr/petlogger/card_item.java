@@ -24,10 +24,10 @@ public class card_item extends AppCompatActivity {
     private Bitmap mImage;
     private String mName;
     private Date mBdate;
-    private Date mLastFed;
-    private Date mLastShed;
+    public Date mLastFed;
+    public Date mLastShed;
     private String mSex;
-    private double mWeight;
+    public double mWeight;
 
 
     public card_item(Bitmap image, String name, Date date, String sex, double weight)
@@ -45,6 +45,8 @@ public class card_item extends AppCompatActivity {
     }
 
     public Bitmap getImage() { return mImage; }
+
+    public double getWeight() { return mWeight; }
 
     public String getName() {return mName;}
 
@@ -68,8 +70,6 @@ public class card_item extends AppCompatActivity {
         this.mMorph = m;
     }
 
-    public void setmMorph(String mMorph) { this.mMorph = mMorph;}
-
     public void setmImage(Bitmap mImage) {this.mImage = mImage;}
 
     public void setmName(String mName) {this.mName = mName;}
@@ -91,15 +91,6 @@ public class card_item extends AppCompatActivity {
         String day = Integer.toString(tempCalendar.get(Calendar.DAY_OF_MONTH));
         String year = Integer.toString(tempCalendar.get(Calendar.YEAR));
         return month+"/"+day+"/"+year;
-    }
-
-    public double getCurrentWeight()
-    {
-        // get the most recent entered weight..however we are storing it
-
-
-        // for now its just the entered weight on create.
-        return this.mWeight;
     }
 
     public int getAge(Date birthdate)

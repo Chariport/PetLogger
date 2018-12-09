@@ -42,7 +42,6 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
     private DatePickerDialog.OnDateSetListener bdayDateSetListener, lastShedDateSetListener, lastFedDateSetListener;
     private EditText lastFedEditTextView;
     private EditText weightEditTextView;
-    private NumberPicker leftOfDecimal, rightOfDecimal;
     private EditText lastShedEditTextView;
     private Spinner sexSpinner;
     private EditText morphEditTextView;
@@ -205,7 +204,7 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
 
     public void displayPetInfo(card_item currentCard) {
         nameEditTextView.setText(currentCard.getName());
-        weightEditTextView.setText(Double.toString(currentCard.getCurrentWeight()));
+        weightEditTextView.setText(Double.toString(currentCard.getWeight()));
         profilePicture.setImageBitmap(currentCard.getImage());
         ageEditTextView.setText(currentCard.dateObjectToMonthDayYearString(currentCard.getBirthDate()));
         lastShedEditTextView.setText(currentCard.dateObjectToMonthDayYearString(currentCard.getLastFed()));
@@ -269,7 +268,7 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
                     dialog3.show();
                     break;
                 case R.id.editPhotoButton:
-                    Log.d(TAG, "clicked on image view");
+                    Log.d(TAG, "clicked on edit photo button");
                     Intent galleryIntent = new Intent(
                             Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
@@ -336,7 +335,8 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
                         nameEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         nameEditTextView.setEnabled(false);
 
-                        //currentCard.setmBdate(petBdate);
+                        currentCard.setmBdate(petBdate);
+                        //currentCard.mBdate = petBdate;
                         ageEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         ageEditTextView.setEnabled(false);
 
@@ -345,6 +345,7 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
                         lastFedEditTextView.setEnabled(false);
 
                         //doubleInput = Double.parseDouble(weightEditTextView.getText().toString());
+                        //currentCard.mWeight = doubleInput;
                         //currentCard.setmWeight(doubleInput);
                         weightEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         weightEditTextView.setEnabled(false);
@@ -359,26 +360,26 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
                         sexSpinner.setEnabled(false);
 
                         stringInput = morphEditTextView.getText().toString();
-                        currentCard.setmMorph(stringInput);
+                        currentCard.setMorph(stringInput);
                         morphEditTextView.setText(stringInput);
                         morphEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         morphEditTextView.setEnabled(false);
 
-//                        // get image
-//                        Bitmap petProfileImage;
-//                        String encodedImage;
-//                        if (gotImage) {
-//                            // Get Bitmap of image
-//                            petProfileImage = ((BitmapDrawable) profilePicture.getDrawable()).getBitmap();
-//                            // compress image..not sure if this is necessary
-//                            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-//                            petProfileImage.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-//                            encodedImage = android.util.Base64.encodeToString(byteArrayOutputStream.toByteArray(), android.util.Base64.DEFAULT);
-//                        } else {
-//                            // set petProfileImage to a default image
-//                            // set petProfileImage to a default image....
-//                            petProfileImage = BitmapFactory.decodeResource(getResources(), R.drawable.defaultpetimage);
-//                        }
+                        // get image
+                        Bitmap petProfileImage;
+                        String encodedImage;
+                        if (gotImage) {
+                            // Get Bitmap of image
+                            petProfileImage = ((BitmapDrawable) profilePicture.getDrawable()).getBitmap();
+                            // compress image..not sure if this is necessary
+                            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                            petProfileImage.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                            encodedImage = android.util.Base64.encodeToString(byteArrayOutputStream.toByteArray(), android.util.Base64.DEFAULT);
+                        } else {
+                            // set petProfileImage to a default image
+                            // set petProfileImage to a default image....
+                            petProfileImage = BitmapFactory.decodeResource(getResources(), R.drawable.defaultpetimage);
+                        }
 //
 //
 //                        // data validation
