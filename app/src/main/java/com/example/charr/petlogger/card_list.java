@@ -1,8 +1,11 @@
 package com.example.charr.petlogger;
 
-import java.util.ArrayList;
+import android.os.Parcelable;
 
-public class card_list {
+import java.util.ArrayList;
+import java.util.stream.Stream;
+
+public class card_list extends ArrayList<Parcelable> {
     private static card_list mInstance;
     private ArrayList<card_item> list = null;
 
@@ -39,4 +42,8 @@ public class card_list {
     public card_item getObjectAtIndex(int indexofobj) { return list.get(indexofobj);}//(list.indexOf(indexofobj)); }
 
 
+    @Override
+    public Stream<Parcelable> stream() {
+        return null;
+    }
 }

@@ -44,12 +44,12 @@
 
             <ImageView
                 android:id="@+id/pet"
-                android:layout_width="match_parent"
-                android:layout_height="1171dp"
+                android:layout_width="376dp"
+                android:layout_height="1252dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="132dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="126dp"
                 app:srcCompat="@drawable/pet_profile_card" />
 
             <TextView
@@ -58,11 +58,13 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="382dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="347dp"
+                android:fontFamily="@font/heebo_light"
                 android:text="Age:"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/nameEditTextView"
@@ -81,8 +83,8 @@
                 android:layout_width="181dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="85dp"
-                android:layout_marginTop="383dp"
+                android:layout_marginStart="88dp"
+                android:layout_marginTop="354dp"
                 android:layout_toEndOf="@+id/textView21"
                 android:text="     20 years old"
                 android:textAlignment="center"
@@ -94,19 +96,21 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="35dp"
+                android:layout_marginStart="34dp"
                 android:layout_marginTop="292dp"
+                android:fontFamily="@font/heebo_light"
                 android:text="Name:"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/lastFedEditTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="48dp"
-                android:layout_marginTop="433dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="397dp"
                 android:layout_toEndOf="@+id/textView17"
                 android:text="         October 23, 2018"
                 android:textAlignment="center"
@@ -118,11 +122,13 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="38dp"
-                android:layout_marginTop="431dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="394dp"
+                android:fontFamily="@font/heebo_light"
                 android:text="Last Fed:"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/lastShedEditTextView"
@@ -142,11 +148,13 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/sexEditTextView"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="41dp"
                 android:layout_marginTop="0dp"
+                android:fontFamily="@font/heebo_light"
                 android:text="Sex:"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/sexEditTextView"
@@ -154,8 +162,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="224dp"
-                android:layout_marginTop="583dp"
+                android:layout_marginStart="222dp"
+                android:layout_marginTop="547dp"
                 android:text="     Male"
                 android:textAlignment="center"
                 android:textSize="18sp" />
@@ -167,10 +175,12 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="39dp"
-                android:layout_marginTop="470dp"
+                android:layout_marginTop="438dp"
+                android:fontFamily="@font/heebo_light"
                 android:text="Weight:"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/weightEditTextView"
@@ -190,11 +200,13 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="41dp"
-                android:layout_marginTop="537dp"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="514dp"
+                android:fontFamily="@font/heebo_light"
                 android:text="Last Shed:"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -203,9 +215,9 @@
                 android:layout_below="@+id/lastFedEditTextView"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="58dp"
-                android:layout_marginTop="164dp"
-                android:layout_marginEnd="45dp"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="289dp"
+                android:layout_marginEnd="48dp"
                 android:cropToPadding="true"
                 app:srcCompat="@drawable/weight_graph" />
 
@@ -217,9 +229,9 @@
                 android:layout_below="@+id/textView23"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="42dp"
-                android:layout_marginTop="259dp"
-                android:layout_marginEnd="44dp"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="386dp"
+                android:layout_marginEnd="41dp"
                 android:background="@drawable/weight_log_button"
                 android:clickable="true"
                 android:onClick="viewWeightLog"
@@ -231,20 +243,23 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/viewWeightLogButton"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="37dp"
-                android:layout_marginTop="22dp"
-                android:layout_marginBottom="0dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="305dp"
+                android:fontFamily="@font/heebo_light"
                 android:text="Notes:"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <ScrollView
                 android:layout_width="321dp"
                 android:layout_height="228dp"
                 android:layout_below="@+id/textView25"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="46dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="86dp">
 
                 <LinearLayout
@@ -256,6 +271,7 @@
                         android:id="@+id/textView27"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:fontFamily="@font/heebo_light"
                         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque rhoncus lacus ac sem facilisis dapibus. Aenean enim augue, tristique eget tincidunt ut, dictum at justo. Aliquam pharetra velit dui, ut pharetra tellus consequat sit amet. Aliquam vitae bibendum dui, et scelerisque lacus. Mauris ut pulvinar ligula. Donec facilisis tortor id ante tristique, a accumsan neque dapibus. Aenean magna tortor, finibus ac sodales ac, dignissim at elit. Curabitur in interdum ante, ut mattis massa." />
                 </LinearLayout>
             </ScrollView>
@@ -269,6 +285,185 @@
                 android:layout_marginStart="93dp"
                 android:layout_marginTop="24dp"
                 android:scaleType="centerCrop" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="-203dp"
+                android:layout_marginBottom="428dp"
+                android:layout_toStartOf="@+id/nameEditTextView">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </TableLayout>
+
+            <TableRow
+                android:layout_width="313dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="625dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="S"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/textView22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="M"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/textView20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="T"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="W"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TH"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="F"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="23dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="S"
+                        android:textAlignment="center" />
+                </LinearLayout>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="49dp"
+                android:layout_marginTop="665dp"
+                android:layout_marginEnd="48dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/sundayCheckBox"
+                        android:layout_width="25dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/colorPrimaryDark"
+                        android:checked="false"
+                        android:shadowColor="@color/colorPrimaryDark" />
+
+                    <CheckBox
+                        android:id="@+id/mondayCheckBox"
+                        android:layout_width="25dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/colorPrimaryDark" />
+
+                    <CheckBox
+                        android:id="@+id/tuesdayCheckBox"
+                        android:layout_width="25dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/colorPrimaryDark" />
+
+                    <CheckBox
+                        android:id="@+id/wednesdayCheckBox"
+                        android:layout_width="25dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/colorPrimaryDark" />
+
+                    <CheckBox
+                        android:id="@+id/thursdayCheckBox"
+                        android:layout_width="25dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/colorPrimaryDark" />
+
+                    <CheckBox
+                        android:id="@+id/fridayCheckBox"
+                        android:layout_width="25dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/colorPrimaryDark" />
+
+                    <CheckBox
+                        android:id="@+id/saturdayCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/colorPrimaryDark"
+                        android:textAlignment="center" />
+                </LinearLayout>
+            </TableRow>
+
+            <TextView
+                android:id="@+id/feedLog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="591dp"
+                android:fontFamily="@font/heebo_light"
+                android:text="Feeding Log"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
