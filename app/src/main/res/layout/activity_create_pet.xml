@@ -29,12 +29,12 @@
         android:layout_centerHorizontal="true"
         android:layout_toEndOf="@id/cancelButton"
         android:fontFamily="@font/heebo_light"
+        android:paddingLeft="10dp"
         android:text="@string/create_pet"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="42sp"
-        android:paddingLeft="10dp"
         android:textStyle="bold" />
 
 
@@ -58,7 +58,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/edittext_birthdate"
+                android:layout_marginTop="40dp"
                 android:fontFamily="@font/heebo_light"
+                android:imeOptions="actionDone"
                 android:text="Name:"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -67,12 +69,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/edittext_birthdate"
+                android:layout_marginTop="110dp"
                 android:fontFamily="@font/heebo_light"
+                android:imeOptions="actionDone"
                 android:text="Birth Date:"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                android:layout_marginTop="110dp"
-                android:imeOptions="actionDone"/>
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -89,18 +91,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/edittext_birthdate"
+                android:layout_marginTop="250dp"
                 android:fontFamily="@font/heebo_light"
+                android:imeOptions="actionDone"
                 android:text="Weight(g):"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                android:layout_marginTop="250dp"
-                android:imeOptions="actionDone"/>
+                android:textSize="20sp" />
 
 
             <EditText
                 android:id="@+id/edittext_name"
                 android:layout_width="275dp"
                 android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/edittext_birthdate"
+                android:layout_alignEnd="@+id/edittext_birthdate"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="65dp"
                 android:autofillHints="@string/hint_name"
@@ -155,6 +159,7 @@
                 android:layout_alignEnd="@+id/edittext_birthdate"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="275dp"
+                android:background="@drawable/createpet_edittextbackground"
                 android:fontFamily="@font/heebo_light"
                 android:hint="@string/hintClick"
                 android:inputType="numberDecimal"
@@ -189,8 +194,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
         android:src="@drawable/clicktoaddphoto"
-        app:civ_border_color="@android:color/transparent"
-        app:civ_border_width="2dp" />
+        app:civ_border_width="2dp"
+        app:civ_border_color="@android:color/transparent"/>
 
 
 </RelativeLayout>
