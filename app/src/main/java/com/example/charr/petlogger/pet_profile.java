@@ -52,9 +52,11 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
     private String tempDate2 = "";
     private String tempDate3 = "";
 
+    private Bitmap petProfileImage;
+
 
     public String petSex, petName;
-    public java.util.Date petBdate, lastFedDate, lastShedDate;
+    public java.util.Date petBdate = null, lastFedDate = null, lastShedDate = null;
     public double petWeight;
 
     ArrayAdapter<CharSequence> sexadapter;
@@ -340,21 +342,23 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
                         nameEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         nameEditTextView.setEnabled(false);
 
-                        //currentCard.setmBdate(petBdate);
+                        if (lastFedDate != null)
+                            currentCard.setmBdate(petBdate);
                         ageEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         ageEditTextView.setEnabled(false);
 
-                        //currentCard.setmLastFed(lastFedDate);
+                        if (lastFedDate != null)
+                            currentCard.setmLastFed(lastFedDate);
                         lastFedEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         lastFedEditTextView.setEnabled(false);
 
-                        //doubleInput = Double.parseDouble(weightEditTextView.getText().toString());
-                        //currentCard.mWeight = doubleInput;
-                        //currentCard.setmWeight(doubleInput);
+                        doubleInput = Double.parseDouble(weightEditTextView.getText().toString());
+                        currentCard.setmWeight(doubleInput);
                         weightEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         weightEditTextView.setEnabled(false);
 
-                        //currentCard.setmLastShed(lastFedDate);
+                        if (lastFedDate != null)
+                            currentCard.setmLastShed(lastFedDate);
                         lastShedEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         lastShedEditTextView.setEnabled(false);
 
@@ -370,7 +374,6 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
                         morphEditTextView.setEnabled(false);
 
                          //get image
-                        Bitmap petProfileImage;
                         String encodedImage;
                         if (gotImage) {
                             // Get Bitmap of image
@@ -412,6 +415,7 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
             gotImage = true;
             Uri selectedImage = data.getData(); //address of image
             profilePicture.setImageURI(selectedImage);
+            currentCard.setmImage(((BitmapDrawable) profilePicture.getDrawable()).getBitmap());
         }
     }
 
