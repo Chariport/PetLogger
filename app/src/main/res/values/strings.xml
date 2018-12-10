@@ -14,6 +14,7 @@
     <string name="weightUnit">g</string>
     <string name="hintClick">click...</string>
     <string-array name="create_pet_sex">
+        <item>---</item>
         <item>Male ♂</item>
         <item>Female ♀</item>
     </string-array>

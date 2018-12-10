@@ -19,12 +19,13 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/backButton"
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="103dp"
                 android:layout_height="50dp"
                 android:background="@drawable/backbutton"
-                android:textColor="@color/colorPrimaryDark" />
+                android:textColor="@color/colorPrimaryDark"
+                android:clickable="true"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -35,189 +36,218 @@
                 android:id="@+id/editButton"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@drawable/edit_button" />
+                android:background="@drawable/edit_button"
+                android:clickable="true"/>
+
         </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <Button
+                android:id="@+id/editPhotoButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_above="@+id/nameEditTextView"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="75dp"
+                android:layout_marginBottom="-250dp"
+                android:layout_weight="1"
+                android:background="@drawable/edit_button"
+                android:clickable="true" />
+
             <ImageView
                 android:id="@+id/pet"
-                android:layout_width="376dp"
-                android:layout_height="1252dp"
+                android:layout_width="match_parent"
+                android:layout_height="1171dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="19dp"
-                android:layout_marginTop="126dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="130dp"
+                android:layout_marginBottom="0dp"
                 app:srcCompat="@drawable/pet_profile_card" />
 
             <TextView
                 android:id="@+id/textView21"
-                android:layout_width="55dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="347dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="330dp"
+                android:text="Birthday:"
                 android:fontFamily="@font/heebo_light"
-                android:text="Age:"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="32sp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/nameEditTextView"
-                android:layout_width="113dp"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="203dp"
-                android:layout_marginTop="292dp"
+                android:layout_marginStart="193dp"
+                android:layout_marginTop="250dp"
+                android:imeOptions="actionDone"
                 android:text="Louis"
+                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="32sp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/ageEditTextView"
-                android:layout_width="181dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="88dp"
-                android:layout_marginTop="354dp"
-                android:layout_toEndOf="@+id/textView21"
-                android:text="     20 years old"
-                android:textAlignment="center"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="111dp"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="34dp"
-                android:layout_marginTop="292dp"
+                android:layout_marginStart="193dp"
+                android:layout_marginTop="321dp"
+                android:clickable="true"
+                android:imeOptions="actionDone"
+                android:text="4/1/2013"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="32sp" />
+
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="260dp"
                 android:fontFamily="@font/heebo_light"
                 android:text="Name:"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="32sp" />
 
             <TextView
-                android:id="@+id/lastFedEditTextView"
+                android:id="@+id/lastFedTextView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="397dp"
-                android:layout_toEndOf="@+id/textView17"
-                android:text="         October 23, 2018"
-                android:textAlignment="center"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textView17"
-                android:layout_width="96dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="394dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="542dp"
                 android:fontFamily="@font/heebo_light"
                 android:text="Last Fed:"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="32sp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/lastShedEditTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/textView19"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="194dp"
-                android:layout_marginTop="3dp"
-                android:text="         October 23, 2018"
+                android:layout_marginStart="193dp"
+                android:layout_marginTop="608dp"
+                android:imeOptions="actionDone"
+                android:text="10/23/2018"
                 android:textAlignment="center"
-                android:textSize="18sp" />
+                android:textColor="@color/black"
+                android:textSize="32sp" />
 
             <TextView
-                android:id="@+id/textView23"
+                android:id="@+id/sexTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/sexEditTextView"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="41dp"
-                android:layout_marginTop="0dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="400dp"
                 android:fontFamily="@font/heebo_light"
                 android:text="Sex:"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="32sp" />
 
             <TextView
-                android:id="@+id/sexEditTextView"
-                android:layout_width="144dp"
+                android:id="@+id/morphTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="680dp"
+                android:text="Morph:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="32sp" />
+
+            <Spinner
+                android:id="@+id/sexSpinner"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="193dp"
+                android:layout_marginTop="397dp"
+                android:textAlignment="center"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/morphEditTextView"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="222dp"
-                android:layout_marginTop="547dp"
-                android:text="     Male"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="734dp"
+                android:imeOptions="actionDone"
+                android:text="Albino Ball Python"
+                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:textSize="18sp" />
+                android:textSize="32sp" />
 
             <TextView
                 android:id="@+id/textView15"
-                android:layout_width="75dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="39dp"
-                android:layout_marginTop="438dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="470dp"
+                android:text="Weight (g):"
                 android:fontFamily="@font/heebo_light"
-                android:text="Weight:"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="32sp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/weightEditTextView"
-                android:layout_width="291dp"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView15"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="85dp"
-                android:layout_marginTop="7dp"
-                android:text="1500 grams on October 23, 2018"
+                android:layout_marginStart="193dp"
+                android:layout_marginTop="-54dp"
+                android:imeOptions="actionDone"
+                android:text="1500 g"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
-                android:textSize="18sp" />
+                android:textColor="@color/black"
+                android:textSize="32sp" />
 
             <TextView
-                android:id="@+id/textView19"
-                android:layout_width="123dp"
+                android:id="@+id/lastShedTextView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="39dp"
-                android:layout_marginTop="514dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="618dp"
                 android:fontFamily="@font/heebo_light"
                 android:text="Last Shed:"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="32sp" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/weightGraph"
                 android:layout_width="308dp"
                 android:layout_height="231dp"
-                android:layout_below="@+id/lastFedEditTextView"
+                android:layout_below="@+id/morphEditTextView"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="55dp"
-                android:layout_marginTop="289dp"
-                android:layout_marginEnd="48dp"
+                android:layout_marginStart="58dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="45dp"
                 android:cropToPadding="true"
                 app:srcCompat="@drawable/weight_graph" />
 
@@ -226,40 +256,39 @@
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="325dp"
                 android:layout_height="56dp"
-                android:layout_below="@+id/textView23"
+                android:layout_below="@+id/weightGraph"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="45dp"
-                android:layout_marginTop="386dp"
-                android:layout_marginEnd="41dp"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="44dp"
                 android:background="@drawable/weight_log_button"
                 android:clickable="true"
                 android:onClick="viewWeightLog"
                 android:textColor="@color/colorPrimaryDark" />
 
             <TextView
-                android:id="@+id/textView25"
+                android:id="@+id/notesHeader"
                 android:layout_width="81dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/viewWeightLogButton"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="305dp"
-                android:fontFamily="@font/heebo_light"
+                android:layout_marginStart="37dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="0dp"
                 android:text="Notes:"
+                android:fontFamily="@font/heebo_light"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="18sp" />
 
             <ScrollView
+                android:id="@+id/notesScrollView"
                 android:layout_width="321dp"
                 android:layout_height="228dp"
-                android:layout_below="@+id/textView25"
+                android:layout_below="@+id/notesHeader"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="44dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="37dp"
+                android:layout_marginTop="2dp"
                 android:layout_marginBottom="86dp">
 
                 <LinearLayout
@@ -267,10 +296,11 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/textView27"
+                    <EditText
+                        android:id="@+id/notesTextView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_below="@+id/notesHeader"
                         android:fontFamily="@font/heebo_light"
                         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque rhoncus lacus ac sem facilisis dapibus. Aenean enim augue, tristique eget tincidunt ut, dictum at justo. Aliquam pharetra velit dui, ut pharetra tellus consequat sit amet. Aliquam vitae bibendum dui, et scelerisque lacus. Mauris ut pulvinar ligula. Donec facilisis tortor id ante tristique, a accumsan neque dapibus. Aenean magna tortor, finibus ac sodales ac, dignissim at elit. Curabitur in interdum ante, ut mattis massa." />
                 </LinearLayout>
@@ -285,6 +315,20 @@
                 android:layout_marginStart="93dp"
                 android:layout_marginTop="24dp"
                 android:scaleType="centerCrop" />
+
+            <EditText
+                android:id="@+id/lastFedEditTextView"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="193dp"
+                android:layout_marginTop="532dp"
+                android:imeOptions="actionDone"
+                android:text="10/23/2018"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="32sp" />
 
             <TableLayout
                 android:layout_width="match_parent"

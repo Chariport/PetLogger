@@ -179,8 +179,8 @@ public class create_pet extends AppCompatActivity implements View.OnClickListene
                 //Log.d(TAG,"gotImage: " + gotImage);
 
 
-                if(petSex.equals("Male ♂")) {petSex = "♂";}
-                else if (petSex.equals("Female ♀")) {petSex = "♀";}
+                if(petSex.equals("Male ♂")) {petSex = "Male ♂";}
+                else if (petSex.equals("Female ♀")) {petSex = "Female ♀";}
 
                 // data validation
                 if(!validateData())
