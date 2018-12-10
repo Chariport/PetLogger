@@ -20,6 +20,7 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
     final String TAG = this.getClass().getName();
 
     private static card_list mCardList;
+    private String sex;
 
     public static class CardViewHolder extends RecyclerView.ViewHolder
     {
@@ -120,6 +121,14 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
         cardViewHolder.mAge.setText(Integer.toString(cardViewHolder.currentCard.getAge(cardViewHolder.currentCard.getBirthDate())));
         cardViewHolder.mWeight.setText(Double.toString(cardViewHolder.currentCard.getWeight()) + " g");
         cardViewHolder.mLastFed.setText(cardViewHolder.currentCard.dateObjectToMonthDayYearString(cardViewHolder.currentCard.getLastFed()));
+
+        sex = cardViewHolder.currentCard.getSex();
+        if (sex == "Male ♂")
+            cardViewHolder.mSex.setText("♂");
+        else if (sex == "Female ♀")
+            cardViewHolder.mSex.setText("♀");
+        else
+            cardViewHolder.mSex.setText("---");
     }
 
     @Override
