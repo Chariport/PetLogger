@@ -4,6 +4,11 @@ import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.Date;
@@ -30,6 +35,12 @@ public class card_item extends AppCompatActivity {
     private double mWeight;
 
 
+    private LineGraphSeries<DataPoint> mWeights;
+
+
+    //private weight_log weightLog = new weight_log();
+
+
     public card_item(Bitmap image, String name, Date date, String sex, double weight)
     {
         mImage = image;
@@ -42,6 +53,9 @@ public class card_item extends AppCompatActivity {
         mLastFed = new Date(); // day of creation
         mLastShed = new Date();
         mMorph = "----"; // should be able to change on detailed profile
+
+
+        mWeights = new LineGraphSeries<>();
     }
 
     public Bitmap getImage() { return mImage; }
@@ -62,6 +76,11 @@ public class card_item extends AppCompatActivity {
     public Date getLastFed() {return mLastFed;}
 
     public Date getmLastShed() { return mLastShed;}
+
+    public LineGraphSeries<DataPoint> getmWeights() {return mWeights;}
+
+
+    public void setmWeights(LineGraphSeries<DataPoint> mWeights) {this.mWeights = mWeights;}
 
     public void setmLastShed(Date mLastShed) {this.mLastShed = mLastShed;}
 

@@ -59,14 +59,17 @@
 
             <ImageView
                 android:id="@+id/pet"
-                android:layout_width="match_parent"
-                android:layout_height="1171dp"
+                android:layout_width="397dp"
+                android:layout_height="1495dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="130dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="140dp"
                 android:layout_marginBottom="0dp"
-                app:srcCompat="@drawable/pet_profile_card" />
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/pet_profile_card"
+                android:clickable="true"
+                android:onClick="viewWeightLog"/>
 
             <TextView
                 android:id="@+id/textView21"
