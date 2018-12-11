@@ -31,7 +31,7 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
 
         //public ImageView mImageView;
         public  ImageView mImageView;
-        public TextView mName, mMorph, mSex, mAge, mWeight, mLastFed;
+        public TextView mName, mMorph, mSex, mAge, mWeight, mLastFed, numbering;
 
 
         public CardViewHolder(@NonNull final View itemView)
@@ -47,6 +47,7 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
             mAge = itemView.findViewById(R.id.petsAgeValue);
             mWeight = itemView.findViewById(R.id.currentWeightValue);
             mLastFed = itemView.findViewById(R.id.lastFedValue);
+            numbering = itemView.findViewById(R.id.numbering);
 
 
             // set onclick listener for entire card to detailed prof
@@ -114,6 +115,7 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
     {
         cardViewHolder.currentCard = mCardList.getArray().get(i);
 
+
         cardViewHolder.mImageView.setImageBitmap(cardViewHolder.currentCard.getImage());
         cardViewHolder.mName.setText(cardViewHolder.currentCard.getName());
         cardViewHolder.mMorph.setText(cardViewHolder.currentCard.getMorph());
@@ -121,6 +123,7 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
         cardViewHolder.mAge.setText(Integer.toString(cardViewHolder.currentCard.getAge(cardViewHolder.currentCard.getBirthDate())));
         cardViewHolder.mWeight.setText(Double.toString(cardViewHolder.currentCard.getWeight()) + " g");
         cardViewHolder.mLastFed.setText(cardViewHolder.currentCard.dateObjectToMonthDayYearString(cardViewHolder.currentCard.getLastFed()));
+        cardViewHolder.numbering.setText(Integer.toString(i + 1) + "/" + Integer.toString(mCardList.getArray().size()));
 
         sex = cardViewHolder.currentCard.getSex();
         if (sex == "Male ♂")
@@ -128,7 +131,7 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
         else if (sex == "Female ♀")
             cardViewHolder.mSex.setText("♀");
         else
-            cardViewHolder.mSex.setText("---");
+            cardViewHolder.mSex.setText("");
     }
 
     @Override
