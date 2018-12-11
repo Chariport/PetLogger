@@ -26,6 +26,9 @@ public class weight_log extends AppCompatActivity {
         setContentView(R.layout.activity_weight_log);
 
         mGraph = (com.jjoe64.graphview.GraphView) findViewById(R.id.weight_graph);
+        currentCard = getCurrentCard();
+        formatGraph(currentCard.getWeight());
+
     }
 
     public void goToPetProfile(View view)
@@ -37,8 +40,9 @@ public class weight_log extends AppCompatActivity {
 
     public void addWeightEntry(View view)
     {
-        Intent intent = new Intent(weight_log.this, weight_log_entry.class);
-        startActivity(intent);
+        Intent intent = new Intent(view.getContext(), weight_log_entry.class);
+        intent.putExtra("indexInArrayList", cardList.getIndex(currentCard));
+        view.getContext().startActivity(intent);
     }
 
     public card_item getCurrentCard() {
@@ -55,7 +59,7 @@ public class weight_log extends AppCompatActivity {
         currentCard.setmWeights(new LineGraphSeries<>(new DataPoint[] {new DataPoint(mCurrentDate, currentCard.getWeight())}));
         mGraph.addSeries(currentCard.getmWeights());
         mGraph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(this));
-        mGraph.getGridLabelRenderer().setNumHorizontalLabels(3);
+        mGraph.getGridLabelRenderer().setNumHorizontalLabels(1);
 
         mGraph.getViewport().setMinX(mCurrentDate.getTime());
         mGraph.getViewport().setXAxisBoundsManual(true);
