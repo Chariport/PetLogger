@@ -71,12 +71,6 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.activity_pet_profile);
 
         backButton = (Button) findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openMainPage();
-            }
-        });
 
         // Initializes text boxes and sets disables them
         initializeEditTextViews();
@@ -88,9 +82,10 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
         displayPetInfo(currentCard);
     }
 
-    public void openMainPage() {
-        Intent intent = new Intent(this, home_page.class);
-        startActivity(intent);
+    public void openMainPage(View view) {
+        Intent intent = new Intent(view.getContext(), home_page.class);
+        intent.putExtra("indexInArrayList", cardList.getIndex(currentCard));
+        view.getContext().startActivity(intent);
     }
 
     public void openWeightLog() {
@@ -342,7 +337,7 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
                         nameEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         nameEditTextView.setEnabled(false);
 
-                        if (lastFedDate != null)
+                        if (petBdate != null)
                             currentCard.setmBdate(petBdate);
                         ageEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         ageEditTextView.setEnabled(false);
@@ -357,8 +352,8 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
                         weightEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         weightEditTextView.setEnabled(false);
 
-                        if (lastFedDate != null)
-                            currentCard.setmLastShed(lastFedDate);
+                        if (lastShedDate != null)
+                            currentCard.setmLastShed(lastShedDate);
                         lastShedEditTextView.setBackgroundColor(Color.TRANSPARENT);
                         lastShedEditTextView.setEnabled(false);
 
