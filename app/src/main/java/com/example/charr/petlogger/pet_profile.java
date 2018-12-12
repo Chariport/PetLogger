@@ -33,6 +33,7 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
 
     final String TAG = this.getClass().getName();
 
+
     private Button backButton;
     private Button weightLogButton;
     private Button editButton;
@@ -89,13 +90,17 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
     }
 
     public void openWeightLog() {
-        Intent intent = new Intent(this, weight_log.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, weight_log.class);
+//        startActivity(intent);
     }
 
     public void viewWeightLog(View view) {
-        Intent intent = new Intent(pet_profile.this, weight_log.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, weight_log.class);
+//        startActivity(intent);
+
+        Intent intent = new Intent(view.getContext(), weight_log.class);
+        intent.putExtra("indexInArrayList", cardList.getIndex(currentCard));
+        view.getContext().startActivity(intent);
     }
 
     public card_item getCurrentCard() {
