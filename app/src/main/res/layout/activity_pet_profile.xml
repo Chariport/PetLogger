@@ -60,13 +60,14 @@
 
             <ImageView
                 android:id="@+id/pet"
-                android:layout_width="match_parent"
-                android:layout_height="1171dp"
+                android:layout_width="397dp"
+                android:layout_height="1539dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="130dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="140dp"
                 android:layout_marginBottom="0dp"
+                android:scaleType="centerCrop"
                 app:srcCompat="@drawable/pet_profile_card" />
 
             <TextView
@@ -269,9 +270,9 @@
                 android:layout_below="@+id/weightGraph"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="39dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="47dp"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="23dp"
+                android:layout_marginEnd="42dp"
                 android:background="@drawable/weight_log_button"
                 android:clickable="true"
                 android:onClick="viewWeightLog"
@@ -283,13 +284,14 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/viewWeightLogButton"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="34dp"
-                android:layout_marginTop="22dp"
+                android:layout_marginStart="152dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginBottom="0dp"
                 android:fontFamily="@font/heebo_light"
-                android:text="Notes:"
+                android:text="Notes"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
             <ScrollView
                 android:id="@+id/notesScrollView"
@@ -297,9 +299,9 @@
                 android:layout_height="228dp"
                 android:layout_below="@+id/notesHeader"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="37dp"
-                android:layout_marginTop="-20dp"
-                android:layout_marginBottom="86dp">
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="60dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -312,7 +314,9 @@
                         android:layout_height="match_parent"
                         android:layout_below="@+id/notesHeader"
                         android:fontFamily="@font/heebo_light"
-                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque rhoncus lacus ac sem facilisis dapibus. Aenean enim augue, tristique eget tincidunt ut, dictum at justo. Aliquam pharetra velit dui, ut pharetra tellus consequat sit amet. Aliquam vitae bibendum dui, et scelerisque lacus. Mauris ut pulvinar ligula. Donec facilisis tortor id ante tristique, a accumsan neque dapibus. Aenean magna tortor, finibus ac sodales ac, dignissim at elit. Curabitur in interdum ante, ut mattis massa." />
+                        android:imeOptions="actionDone"
+                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque rhoncus lacus ac sem facilisis dapibus. Aenean enim augue, tristique eget tincidunt ut, dictum at justo. Aliquam pharetra velit dui, ut pharetra tellus consequat sit amet. Aliquam vitae bibendum dui, et scelerisque lacus. Mauris ut pulvinar ligula. Donec facilisis tortor id ante tristique, a accumsan neque dapibus. Aenean magna tortor, finibus ac sodales ac, dignissim at elit. Curabitur in interdum ante, ut mattis massa."
+                        android:textAlignment="viewStart" />
                 </LinearLayout>
             </ScrollView>
 
