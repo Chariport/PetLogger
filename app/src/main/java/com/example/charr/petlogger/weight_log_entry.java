@@ -24,7 +24,7 @@ public class weight_log_entry extends AppCompatActivity implements View.OnClickL
     private card_item currentCard;
     private Calendar mCalendar = Calendar.getInstance();
     private TextView weight;
-    private com.jjoe64.graphview.GraphView mGraph;
+    private TextView petNameTextView;
 
     private TextView date;
     public DatePickerDialog.OnDateSetListener DateSetListener;
@@ -41,10 +41,13 @@ public class weight_log_entry extends AppCompatActivity implements View.OnClickL
 
         currentCard = getCurrentCard();
         weight = (TextView) findViewById(R.id.edittextWeight);
-        mGraph = (com.jjoe64.graphview.GraphView) findViewById(R.id.weight_graph);
 
         date = (TextView) findViewById(R.id.date);
         date.setOnClickListener(this);
+
+        petNameTextView =(TextView) findViewById(R.id.petNameTextView);
+        String title = currentCard.getName() + "'s New Weight";
+        petNameTextView.setText(title);
 
         //set up DateSetListener
         DateSetListener = new DatePickerDialog.OnDateSetListener()
@@ -71,8 +74,8 @@ public class weight_log_entry extends AppCompatActivity implements View.OnClickL
     public void saveBackToWeightLog(View view)
     {
         double newWeight = Double.parseDouble(weight.getText().toString());
-        currentCard.getmWeights().appendData(new DataPoint(weightDate, newWeight), true, 5);
-        mGraph.addSeries(currentCard.getmWeights());
+        currentCard.getmWeights().appendData(new DataPoint(weightDate, newWeight), true, 2);
+        currentCard.getmGraph().addSeries(currentCard.getmWeights());
 
         pushExtras(view);
     }

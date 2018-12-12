@@ -33,9 +33,20 @@ public class card_item extends AppCompatActivity {
     private Date mLastShed;
     private String mSex;
     private double mWeight;
-
-
+    private com.jjoe64.graphview.GraphView mGraph;
     private LineGraphSeries<DataPoint> mWeights;
+
+
+
+
+
+    public GraphView getmGraph() {
+        return mGraph;
+    }
+
+    public void setmGraph(GraphView mGraph) {
+        this.mGraph = mGraph;
+    }
 
 
     //private weight_log weightLog = new weight_log();
@@ -56,6 +67,10 @@ public class card_item extends AppCompatActivity {
 
 
         mWeights = new LineGraphSeries<>();
+
+        Calendar mCalendar = Calendar.getInstance();
+        Date mCurrentDate = mCalendar.getTime();
+        mWeights.appendData(new DataPoint(mCurrentDate, mWeight), true, 2);
     }
 
     public Bitmap getImage() { return mImage; }
