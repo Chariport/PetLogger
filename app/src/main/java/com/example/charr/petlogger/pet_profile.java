@@ -209,7 +209,7 @@ public class pet_profile extends AppCompatActivity implements View.OnClickListen
         weightEditTextView.setText(Double.toString(currentCard.getWeight()));
         profilePicture.setImageBitmap(currentCard.getImage());
         ageEditTextView.setText(currentCard.dateObjectToMonthDayYearString(currentCard.getBirthDate()));
-        lastShedEditTextView.setText(currentCard.dateObjectToMonthDayYearString(currentCard.getLastFed()));
+        lastShedEditTextView.setText(currentCard.dateObjectToMonthDayYearString(currentCard.getmLastShed()));
         lastFedEditTextView.setText(currentCard.dateObjectToMonthDayYearString(currentCard.getLastFed()));
         morphEditTextView.setText(currentCard.getMorph());
 
