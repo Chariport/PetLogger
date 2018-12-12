@@ -25,6 +25,7 @@
                 android:layout_height="50dp"
                 android:background="@drawable/backbutton"
                 android:textColor="@color/colorPrimaryDark"
+                android:onClick="openMainPage"
                 android:clickable="true"/>
 
             <Space
