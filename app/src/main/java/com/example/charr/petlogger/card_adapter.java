@@ -126,9 +126,9 @@ public class card_adapter extends RecyclerView.Adapter<card_adapter.CardViewHold
         cardViewHolder.numbering.setText(Integer.toString(i + 1) + "/" + Integer.toString(mCardList.getArray().size()));
 
         sex = cardViewHolder.currentCard.getSex();
-        if (sex == "Male ♂")
+        if (sex.equals("Male ♂"))
             cardViewHolder.mSex.setText("♂");
-        else if (sex == "Female ♀")
+        else if (sex.equals("Female ♀"))
             cardViewHolder.mSex.setText("♀");
         else
             cardViewHolder.mSex.setText("");
